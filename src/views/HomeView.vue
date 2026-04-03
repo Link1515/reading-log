@@ -1,5 +1,5 @@
 <script setup>
-import { computed, nextTick, onBeforeUnmount, onMounted, reactive, ref } from 'vue'
+import { computed, reactive } from 'vue'
 import { Icon } from '@iconify/vue'
 import Fuse from 'fuse.js'
 import BookFilters from '../components/BookFilters.vue'
@@ -39,11 +39,13 @@ const filters = reactive({
 })
 
 const uiState = reactive({
-  showSearch: false,
   showFilters: false,
 })
 
-const searchInput = ref(null)
+const searchInputState = reactive({
+  draftKeyword: '',
+  isComposing: false,
+})
 
 function compareBooks(sortKey, left, right) {
   switch (sortKey) {
@@ -94,117 +96,76 @@ const resultSummary = computed(() => {
   return `共 ${count} 本書`
 })
 
-const activeKeyword = computed(() => filters.keyword.trim())
+function syncKeyword(value) {
+  searchInputState.draftKeyword = value
+
+  if (!searchInputState.isComposing) {
+    filters.keyword = value
+  }
+}
+
+function handleCompositionStart() {
+  searchInputState.isComposing = true
+}
+
+function handleCompositionEnd(event) {
+  searchInputState.isComposing = false
+  syncKeyword(event.target.value)
+}
 
 function resetFilters() {
   filters.keyword = ''
+  searchInputState.draftKeyword = ''
   filters.startDate = ''
   filters.endDate = ''
   filters.sort = 'date-desc'
   uiState.showFilters = false
 }
-
-async function openSearch() {
-  uiState.showSearch = true
-  await nextTick()
-  searchInput.value?.focus()
-}
-
-function closeSearch() {
-  uiState.showSearch = false
-  uiState.showFilters = false
-}
-
-function handleSearchEscape(event) {
-  if (event.key !== 'Escape') {
-    return
-  }
-
-  event.preventDefault()
-  event.stopPropagation()
-  closeSearch()
-}
-
-function handleGlobalKeydown(event) {
-  const target = event.target
-  const isTypingTarget = target instanceof HTMLElement && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT' || target.isContentEditable)
-
-  if (event.key === '/' && !isTypingTarget) {
-    event.preventDefault()
-    openSearch()
-  }
-
-  if (event.key === 'Escape' && uiState.showSearch) {
-    closeSearch()
-  }
-}
-
-onMounted(() => {
-  window.addEventListener('keydown', handleGlobalKeydown)
-})
-
-onBeforeUnmount(() => {
-  window.removeEventListener('keydown', handleGlobalKeydown)
-})
 </script>
 
 <template>
   <main class="page-shell">
-    <button class="mobile-search-trigger" type="button" aria-label="開啟搜尋" title="開啟搜尋" @click="openSearch">
-      <Icon icon="material-symbols:search-rounded" class="mobile-search-icon" />
-      <span class="search-trigger-tooltip"> 按 <kbd>/</kbd> 開啟搜尋，按 <kbd>Esc</kbd> 關閉 </span>
-    </button>
-
-    <Transition name="search-backdrop-fade">
-      <button v-if="uiState.showSearch" class="search-backdrop" type="button" aria-label="關閉搜尋" @click="closeSearch" />
-    </Transition>
-
-    <Transition name="search-dock-fade">
-      <section v-if="uiState.showSearch" class="search-dock">
-        <label class="search-shell" for="global-search">
-          <span class="search-label">搜尋書名或作者</span>
-          <input
-            id="global-search"
-            ref="searchInput"
-            :value="filters.keyword"
-            class="search-input"
-            type="search"
-            placeholder="直接輸入關鍵字，例如：Cal Newport 或 原子習慣"
-            @input="filters.keyword = $event.target.value"
-            @keydown="handleSearchEscape"
-          />
-        </label>
-        <div class="search-toolbar">
-          <button
-            class="collapse-toggle"
-            type="button"
-            :aria-expanded="uiState.showFilters"
-            :aria-label="uiState.showFilters ? '收合條件調整' : '展開條件調整'"
-            :title="uiState.showFilters ? '收合條件調整' : '展開條件調整'"
-            aria-controls="search-filters-panel"
-            @click="uiState.showFilters = !uiState.showFilters"
-          >
-            <Icon :icon="uiState.showFilters ? 'material-symbols:close-rounded' : 'material-symbols:tune-rounded'" class="collapse-icon" />
-          </button>
-        </div>
-
-        <Transition name="collapse-panel">
-          <div v-if="uiState.showFilters" id="search-filters-panel" class="search-collapse">
-            <BookFilters v-model:start-date="filters.startDate" v-model:end-date="filters.endDate" v-model:sort="filters.sort" :sort-options="sortOptions" @reset="resetFilters" />
-          </div>
-        </Transition>
-      </section>
-    </Transition>
-
     <section class="hero">
       <p class="eyebrow">Personal Library</p>
       <h1>閱讀紀錄</h1>
       <p class="hero-copy">收藏每一次閱讀留下的痕跡</p>
     </section>
 
-    <section v-if="activeKeyword" class="active-search" aria-label="目前搜尋條件">
-      <p class="active-search-label">目前搜尋</p>
-      <p class="active-search-keyword">「{{ activeKeyword }}」</p>
+    <section class="search-panel" aria-label="搜尋與篩選">
+      <div class="search-toolbar">
+        <label class="search-shell" for="global-search">
+          <div class="search-input-wrap">
+            <input
+              id="global-search"
+              :value="searchInputState.isComposing ? searchInputState.draftKeyword : filters.keyword"
+              class="search-input"
+              type="search"
+              placeholder="直接輸入關鍵字"
+              @compositionstart="handleCompositionStart"
+              @compositionend="handleCompositionEnd"
+              @input="syncKeyword($event.target.value)"
+            />
+            <Icon icon="material-symbols:search-rounded" class="search-input-icon" />
+          </div>
+        </label>
+        <button
+          class="collapse-toggle"
+          type="button"
+          :aria-expanded="uiState.showFilters"
+          :aria-label="uiState.showFilters ? '收合條件調整' : '展開條件調整'"
+          :title="uiState.showFilters ? '收合條件調整' : '展開條件調整'"
+          aria-controls="search-filters-panel"
+          @click="uiState.showFilters = !uiState.showFilters"
+        >
+          <Icon :icon="uiState.showFilters ? 'material-symbols:close-rounded' : 'material-symbols:tune-rounded'" class="collapse-icon" />
+        </button>
+      </div>
+
+      <Transition name="collapse-panel">
+        <div v-if="uiState.showFilters" id="search-filters-panel" class="search-collapse">
+          <BookFilters v-model:start-date="filters.startDate" v-model:end-date="filters.endDate" v-model:sort="filters.sort" :sort-options="sortOptions" @reset="resetFilters" />
+        </div>
+      </Transition>
     </section>
 
     <p class="search-summary list-summary">{{ resultSummary }}</p>
