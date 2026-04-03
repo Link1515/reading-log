@@ -335,6 +335,33 @@ kbd {
   color: var(--text-muted);
 }
 
+.active-search {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin: 0 0 20px;
+  padding: 12px 14px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
+  background: rgba(26, 28, 34, 0.72);
+  backdrop-filter: blur(16px);
+}
+
+.active-search-label,
+.active-search-keyword {
+  margin: 0;
+}
+
+.active-search-label {
+  color: var(--text-muted);
+  font-size: 0.9rem;
+}
+
+.active-search-keyword {
+  color: #ffffff;
+  font-size: 0.96rem;
+}
+
 .filters-card,
 .empty-state {
   border: 1px solid var(--border);
@@ -577,6 +604,12 @@ kbd {
   .filters-card {
     padding: 18px;
     border-radius: 14px;
+  }
+
+  .active-search {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 6px;
   }
 
   .field,

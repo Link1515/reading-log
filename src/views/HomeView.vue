@@ -86,6 +86,8 @@ const resultSummary = computed(() => {
   return `共 ${count} 本書`
 })
 
+const activeKeyword = computed(() => filters.keyword.trim())
+
 function resetFilters() {
   filters.keyword = ''
   filters.startDate = ''
@@ -215,6 +217,12 @@ onBeforeUnmount(() => {
         以靜態資料維護你的書單，快速搜尋、篩選並排序每一次閱讀紀錄。
       </p>
     </section>
+
+    <section v-if="activeKeyword" class="active-search" aria-label="目前搜尋條件">
+      <p class="active-search-label">目前搜尋</p>
+      <p class="active-search-keyword">「{{ activeKeyword }}」</p>
+    </section>
+
     <BookList :books="filteredBooks" />
   </main>
 </template>
