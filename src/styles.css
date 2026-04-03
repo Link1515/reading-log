@@ -537,7 +537,7 @@ select {
 
 .empty-title {
   margin: 0 0 8px;
-  font-size: 1.8rem;
+  font-size: clamp(1.15rem, 2vw, 1.35rem);
   color: #ffffff;
 }
 
