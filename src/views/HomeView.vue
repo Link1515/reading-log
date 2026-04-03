@@ -166,7 +166,7 @@ function resetFilters() {
               :value="searchInputState.isComposing ? searchInputState.draftKeyword : filters.keyword"
               class="search-input"
               type="search"
-              placeholder="直接輸入關鍵字"
+              placeholder="輸入關鍵字查詢"
               @compositionstart="handleCompositionStart"
               @compositionend="handleCompositionEnd"
               @input="syncKeyword($event.target.value)"
