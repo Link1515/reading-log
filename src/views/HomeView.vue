@@ -65,10 +65,10 @@ function compareBooks(sortKey, left, right) {
 
 const filteredBooks = computed(() => {
   const keyword = filters.keyword.trim()
-  const searchResults = keyword ? fuse.search(keyword).map((result) => result.item) : books
+  const searchResults = keyword ? fuse.search(keyword).map(result => result.item) : books
 
   return searchResults
-    .filter((book) => {
+    .filter(book => {
       if (filters.startDate && book.endReadDate < filters.startDate) {
         return false
       }
@@ -127,12 +127,7 @@ function handleSearchEscape(event) {
 
 function handleGlobalKeydown(event) {
   const target = event.target
-  const isTypingTarget =
-    target instanceof HTMLElement &&
-    (target.tagName === 'INPUT' ||
-      target.tagName === 'TEXTAREA' ||
-      target.tagName === 'SELECT' ||
-      target.isContentEditable)
+  const isTypingTarget = target instanceof HTMLElement && (target.tagName === 'INPUT' || target.tagName === 'TEXTAREA' || target.tagName === 'SELECT' || target.isContentEditable)
 
   if (event.key === '/' && !isTypingTarget) {
     event.preventDefault()
@@ -155,27 +150,13 @@ onBeforeUnmount(() => {
 
 <template>
   <main class="page-shell">
-    <button
-      class="mobile-search-trigger"
-      type="button"
-      aria-label="開啟搜尋"
-      title="開啟搜尋"
-      @click="openSearch"
-    >
+    <button class="mobile-search-trigger" type="button" aria-label="開啟搜尋" title="開啟搜尋" @click="openSearch">
       <Icon icon="material-symbols:search-rounded" class="mobile-search-icon" />
-      <span class="search-trigger-tooltip">
-        按 <kbd>/</kbd> 開啟搜尋，按 <kbd>Esc</kbd> 關閉
-      </span>
+      <span class="search-trigger-tooltip"> 按 <kbd>/</kbd> 開啟搜尋，按 <kbd>Esc</kbd> 關閉 </span>
     </button>
 
     <Transition name="search-backdrop-fade">
-      <button
-        v-if="uiState.showSearch"
-        class="search-backdrop"
-        type="button"
-        aria-label="關閉搜尋"
-        @click="closeSearch"
-      />
+      <button v-if="uiState.showSearch" class="search-backdrop" type="button" aria-label="關閉搜尋" @click="closeSearch" />
     </Transition>
 
     <Transition name="search-dock-fade">
@@ -203,26 +184,13 @@ onBeforeUnmount(() => {
             aria-controls="search-filters-panel"
             @click="uiState.showFilters = !uiState.showFilters"
           >
-            <Icon
-              :icon="uiState.showFilters ? 'material-symbols:close-rounded' : 'material-symbols:tune-rounded'"
-              class="collapse-icon"
-            />
+            <Icon :icon="uiState.showFilters ? 'material-symbols:close-rounded' : 'material-symbols:tune-rounded'" class="collapse-icon" />
           </button>
         </div>
 
         <Transition name="collapse-panel">
-          <div
-            v-if="uiState.showFilters"
-            id="search-filters-panel"
-            class="search-collapse"
-          >
-            <BookFilters
-              v-model:start-date="filters.startDate"
-              v-model:end-date="filters.endDate"
-              v-model:sort="filters.sort"
-              :sort-options="sortOptions"
-              @reset="resetFilters"
-            />
+          <div v-if="uiState.showFilters" id="search-filters-panel" class="search-collapse">
+            <BookFilters v-model:start-date="filters.startDate" v-model:end-date="filters.endDate" v-model:sort="filters.sort" :sort-options="sortOptions" @reset="resetFilters" />
           </div>
         </Transition>
       </section>
@@ -231,9 +199,7 @@ onBeforeUnmount(() => {
     <section class="hero">
       <p class="eyebrow">Personal Library</p>
       <h1>閱讀紀錄</h1>
-      <p class="hero-copy">
-        以靜態資料維護你的書單，快速搜尋、篩選並排序每一次閱讀紀錄。
-      </p>
+      <p class="hero-copy">收藏每一次閱讀留下的痕跡</p>
     </section>
 
     <section v-if="activeKeyword" class="active-search" aria-label="目前搜尋條件">
