@@ -107,6 +107,16 @@ function closeSearch() {
   uiState.showFilters = false
 }
 
+function handleSearchEscape(event) {
+  if (event.key !== 'Escape') {
+    return
+  }
+
+  event.preventDefault()
+  event.stopPropagation()
+  closeSearch()
+}
+
 function handleGlobalKeydown(event) {
   const target = event.target
   const isTypingTarget =
@@ -172,6 +182,7 @@ onBeforeUnmount(() => {
             type="search"
             placeholder="直接輸入關鍵字，例如：Cal Newport 或 原子習慣"
             @input="filters.keyword = $event.target.value"
+            @keydown="handleSearchEscape"
           />
         </label>
         <div class="search-toolbar">
