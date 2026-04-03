@@ -1,13 +1,5 @@
 <script setup>
 defineProps({
-  title: {
-    type: String,
-    required: true,
-  },
-  author: {
-    type: String,
-    required: true,
-  },
   startDate: {
     type: String,
     required: true,
@@ -24,15 +16,9 @@ defineProps({
     type: Array,
     required: true,
   },
-  resultSummary: {
-    type: String,
-    required: true,
-  },
 })
 
 const emit = defineEmits([
-  'update:title',
-  'update:author',
   'update:startDate',
   'update:endDate',
   'update:sort',
@@ -44,35 +30,12 @@ const emit = defineEmits([
   <section class="filters-card">
     <div class="filters-header">
       <div>
-        <p class="section-label">篩選與排序</p>
-        <h2>快速找到你讀過的書</h2>
+        <p class="section-label">條件調整</p>
+        <h2>用日期與排序縮小結果</h2>
       </div>
-      <p class="result-summary">{{ resultSummary }}</p>
     </div>
 
     <div class="filters-grid">
-      <label class="field">
-        <span>書名搜尋</span>
-        <input
-          :value="title"
-          class="control"
-          type="search"
-          placeholder="輸入書名關鍵字"
-          @input="emit('update:title', $event.target.value)"
-        />
-      </label>
-
-      <label class="field">
-        <span>作者搜尋</span>
-        <input
-          :value="author"
-          class="control"
-          type="search"
-          placeholder="輸入作者名稱"
-          @input="emit('update:author', $event.target.value)"
-        />
-      </label>
-
       <label class="field">
         <span>起始日期</span>
         <input
@@ -106,7 +69,7 @@ const emit = defineEmits([
         </select>
       </label>
 
-      <button class="reset-button" type="button" @click="emit('reset')">清除篩選</button>
+      <button class="reset-button" type="button" @click="emit('reset')">清除全部條件</button>
     </div>
   </section>
 </template>
