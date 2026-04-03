@@ -11,9 +11,9 @@ defineProps({
 
 <template>
   <section class="list-section">
-    <div v-if="books.length" class="book-grid">
+    <ul v-if="books.length" class="book-list" aria-label="書籍清單">
       <BookListItem v-for="book in books" :key="book.id" :book="book" />
-    </div>
+    </ul>
 
     <div v-else class="empty-state">
       <p class="empty-title">找不到符合條件的書籍</p>
