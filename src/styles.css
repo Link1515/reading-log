@@ -173,11 +173,12 @@ select {
 
 .search-collapse {
   margin-top: 16px;
-  overflow: hidden;
+  overflow: visible;
 }
 
 .collapse-panel-enter-active,
 .collapse-panel-leave-active {
+  overflow: hidden;
   transition:
     max-height 220ms ease,
     opacity 180ms ease,
@@ -266,6 +267,7 @@ select {
   display: grid;
   grid-template-columns: repeat(12, minmax(0, 1fr));
   gap: 16px;
+  min-width: 0;
 }
 
 .field {
@@ -273,6 +275,7 @@ select {
   flex-direction: column;
   gap: 8px;
   grid-column: span 3;
+  min-width: 0;
 }
 
 .field span {
@@ -282,6 +285,7 @@ select {
 
 .control {
   width: 100%;
+  min-width: 0;
   min-height: 44px;
   padding: 0 14px;
   border: 1px solid rgba(255, 255, 255, 0.08);
@@ -292,6 +296,13 @@ select {
     border-color 160ms ease,
     background-color 160ms ease,
     box-shadow 160ms ease;
+}
+
+select.control {
+  padding-right: 40px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .control:hover {
@@ -577,6 +588,27 @@ select {
   .page-shell {
     width: min(100% - 20px, 1120px);
     padding: 28px 0 48px;
+  }
+
+  .search-panel {
+    position: sticky;
+    top: 12px;
+    padding: 14px;
+    border-radius: 16px;
+  }
+
+  .search-toolbar {
+    position: sticky;
+    top: 0;
+    z-index: 2;
+    align-items: stretch;
+  }
+
+  .search-collapse {
+    max-height: calc(100vh - 120px);
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    -webkit-overflow-scrolling: touch;
   }
 
   .filters-card {
