@@ -21,7 +21,7 @@ defineProps({
 
     <div v-else class="empty-state">
       <p class="empty-title">找不到符合條件的書籍</p>
-      <p class="empty-copy">請調整搜尋關鍵字、日期區間，或清除目前篩選條件。</p>
+      <p class="empty-copy">請調整搜尋關鍵字、作者、類型、日期區間，或清除目前篩選條件。</p>
     </div>
   </section>
 </template>

@@ -31,8 +31,24 @@ const fuse = new Fuse(books, {
   minMatchCharLength: 1,
 })
 
+const authorOptions = [...new Set(books.map(book => book.author))]
+  .toSorted((left, right) => collator.compare(left, right))
+  .map(author => ({
+    value: author,
+    label: author,
+  }))
+
+const categoryOptions = [...new Set(books.map(book => book.category))]
+  .toSorted((left, right) => collator.compare(left, right))
+  .map(category => ({
+    value: category,
+    label: category,
+  }))
+
 const filters = reactive({
   keyword: '',
+  author: '',
+  category: '',
   startDate: '',
   endDate: '',
   sort: 'date-desc',
@@ -71,6 +87,14 @@ const filteredBooks = computed(() => {
 
   return searchResults
     .filter(book => {
+      if (filters.author && book.author !== filters.author) {
+        return false
+      }
+
+      if (filters.category && book.category !== filters.category) {
+        return false
+      }
+
       if (filters.startDate && book.endReadDate < filters.startDate) {
         return false
       }
@@ -116,6 +140,8 @@ function handleCompositionEnd(event) {
 function resetFilters() {
   filters.keyword = ''
   searchInputState.draftKeyword = ''
+  filters.author = ''
+  filters.category = ''
   filters.startDate = ''
   filters.endDate = ''
   filters.sort = 'date-desc'
@@ -163,7 +189,17 @@ function resetFilters() {
 
       <Transition name="collapse-panel">
         <div v-if="uiState.showFilters" id="search-filters-panel" class="search-collapse">
-          <BookFilters v-model:start-date="filters.startDate" v-model:end-date="filters.endDate" v-model:sort="filters.sort" :sort-options="sortOptions" @reset="resetFilters" />
+          <BookFilters
+            v-model:author="filters.author"
+            v-model:category="filters.category"
+            v-model:start-date="filters.startDate"
+            v-model:end-date="filters.endDate"
+            v-model:sort="filters.sort"
+            :author-options="authorOptions"
+            :category-options="categoryOptions"
+            :sort-options="sortOptions"
+            @reset="resetFilters"
+          />
         </div>
       </Transition>
     </section>
