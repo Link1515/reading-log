@@ -142,14 +142,35 @@
 
 ### 書籍資料欄位
 
-每筆書籍資料至少包含：
+原始資料目前支援兩種格式：
+
+1. 單本書
+2. 系列書
+
+單本書至少包含：
 
 - `title`: 書名
 - `author`: 作者
 - `category`: 類別
 - `readDate`: 閱讀日期，格式固定為 `YYYY-MM-DD`
 
-範例：
+系列書至少包含：
+
+- `title`: 系列名稱
+- `author`: 作者
+- `category`: 類別
+- `volumes`: 分集陣列
+
+`volumes` 內每一集至少包含：
+
+- `volume`: 集數，使用字串儲存，內容統一用阿拉伯數字，例如 `1`、`2`、`10`
+- `readDate`: 閱讀日期，格式固定為 `YYYY-MM-DD`
+
+`subtitle` 為可選欄位：
+
+- `subtitle`: 分集副標題，可省略，或使用空字串
+
+單本書範例：
 
 ```json
 [
@@ -164,6 +185,29 @@
     "author": "Yuval Noah Harari",
     "category": "歷史",
     "readDate": "2025-03-02"
+  }
+]
+```
+
+系列書範例：
+
+```json
+[
+  {
+    "title": "楚留香新傳",
+    "author": "古龍",
+    "category": "武俠小說",
+    "volumes": [
+      {
+        "volume": "1",
+        "subtitle": "借屍還魂",
+        "readDate": "2025-07-01"
+      },
+      {
+        "volume": "2",
+        "readDate": "2025-07-01"
+      }
+    ]
   }
 ]
 ```
@@ -486,12 +530,13 @@ scripts/
 build 資料整理流程至少要做以下處理：
 
 1. 讀取 `src/data/raw/books.json`
-2. 驗證每筆資料欄位是否存在
-3. 驗證 `readDate` 是否為合法 `YYYY-MM-DD`
-4. 清理字串前後空白
-5. 統一輸出欄位結構
-6. 依固定規則排序
-7. 產出 `src/data/generated/books.json`
+2. 驗證每筆資料是單本書或系列書格式
+3. 驗證單本書的 `readDate` 是否為合法 `YYYY-MM-DD`
+4. 驗證系列書每一集的 `readDate` 是否為合法 `YYYY-MM-DD`
+5. 清理字串前後空白
+6. 統一輸出欄位結構
+7. 依固定規則排序
+8. 產出 `src/data/generated/books.json`
 
 ### Build 時的排序規則
 
@@ -521,10 +566,15 @@ build 腳本至少要檢查以下條件：
 - `title` 必須存在且為非空字串
 - `author` 必須存在且為非空字串
 - `category` 必須存在且為非空字串
-- `readDate` 必須存在且符合 `YYYY-MM-DD`
+- 單本書必須有 `readDate`，且符合 `YYYY-MM-DD`
+- 系列書必須有 `volumes`，且為非空陣列
+- 系列書每一集都必須有 `volume`
+- 系列書每一集都必須有 `readDate`，且符合 `YYYY-MM-DD`
+- 系列書每一集的 `subtitle` 可省略，若存在則必須是字串
 - 原始資料格式必須是陣列
 
 若資料不合法，build 應直接失敗並回報明確錯誤，讓我可以回去修正 `raw/books.json`。
+錯誤訊息應優先直接顯示 `title`，不要只用「第幾筆資料」描述。
 
 ### 重複資料檢查
 
@@ -547,6 +597,7 @@ build 腳本可加入輕量重複檢查。
 
 產出的 `generated/books.json` 至少要保留以下欄位：
 
+- `type`
 - `title`
 - `author`
 - `category`
@@ -557,6 +608,10 @@ build 腳本可加入輕量重複檢查。
 - `id`
 - `searchText`
 - `readYear`
+- `startReadDate`
+- `endReadDate`
+- `volumes`
+- `volumeCount`
 
 可以加入，但必須遵守：
 
@@ -586,9 +641,13 @@ build 腳本可加入輕量重複檢查。
 - `title`: 字串，不可為空
 - `author`: 字串，不可為空
 - `category`: 字串，不可為空
-- `readDate`: `YYYY-MM-DD`
+- 單本書使用 `readDate`: `YYYY-MM-DD`
+- 系列書使用 `volumes`
+- `volumes[].volume` 一律使用阿拉伯數字字串
+- `volumes[].subtitle` 可省略
+- `volumes[].readDate` 必須是 `YYYY-MM-DD`
 
-範例：
+單本書範例：
 
 ```json
 {
@@ -596,6 +655,27 @@ build 腳本可加入輕量重複檢查。
   "author": "Cal Newport",
   "category": "生產力",
   "readDate": "2026-04-03"
+}
+```
+
+系列書範例：
+
+```json
+{
+  "title": "俠客行",
+  "author": "金庸",
+  "category": "武俠小說",
+  "volumes": [
+    {
+      "volume": "1",
+      "readDate": "2022-12-20"
+    },
+    {
+      "volume": "2",
+      "subtitle": "賞善罰惡",
+      "readDate": "2022-12-20"
+    }
+  ]
 }
 ```
 
