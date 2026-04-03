@@ -1,32 +1,638 @@
 [
   {
-    "title": "原子習慣",
-    "author": "James Clear",
-    "category": "自我成長",
-    "readDate": "2025-01-15"
+    "title": "大唐雙龍傳",
+    "author": "黃易",
+    "category": "武俠小說",
+    "readDate": "2026-03-30"
   },
   {
-    "title": "人類大歷史",
-    "author": "Yuval Noah Harari",
-    "category": "歷史",
-    "readDate": "2025-03-02"
+    "title": "那些年, 我們一起追的女孩",
+    "author": "九把刀",
+    "category": "愛情小說",
+    "readDate": "2026-03-20"
   },
   {
-    "title": "深度工作力",
-    "author": "Cal Newport",
-    "category": "生產力",
-    "readDate": "2026-04-03"
+    "title": "武動乾坤",
+    "author": "天蠶土豆",
+    "category": "玄幻小說",
+    "readDate": "2025-09-12"
   },
   {
-    "title": "被討厭的勇氣",
+    "title": "楚留香新傳. 五, 新月傳奇",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2025-07-12"
+  },
+  {
+    "title": "楚留香新傳. 六, 午夜蘭花",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2025-07-12"
+  },
+  {
+    "title": "楚留香新傳. 四, 桃花傳奇",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2025-07-12"
+  },
+  {
+    "title": "楚留香新傳. 一, 借屍還魂",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2025-07-01"
+  },
+  {
+    "title": "楚留香新傳. 三, 蝙蝠傳奇(下)",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2025-07-01"
+  },
+  {
+    "title": "楚留香新傳. 二, 蝙蝠傳奇(上)",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2025-07-01"
+  },
+  {
+    "title": "被討厭的勇氣 : 自我啟發之父「阿德勒」的教導",
     "author": "岸見一郎、古賀史健",
-    "category": "心理",
+    "category": "心理成長",
+    "readDate": "2025-07-01"
+  },
+  {
+    "title": "七種武器",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2025-04-26"
+  },
+  {
+    "title": "火併蕭十一郎",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2025-04-26"
+  },
+  {
+    "title": "非虛構寫作指南 : 從構思、下筆到寫出風格, 橫跨兩世紀, 影響百萬人的寫作聖經",
+    "author": "威廉.金瑟(William Zinsser)",
+    "category": "寫作",
+    "readDate": "2025-04-26"
+  },
+  {
+    "title": "蕭十一郎",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2025-03-11"
+  },
+  {
+    "title": "杏花渡傳說 : 鄭丰武俠短篇精選集",
+    "author": "鄭丰",
+    "category": "武俠小說",
+    "readDate": "2025-03-08"
+  },
+  {
+    "title": "綾羅歌",
+    "author": "鄭丰",
+    "category": "武俠小說",
+    "readDate": "2025-03-08"
+  },
+  {
+    "title": "新絕代雙驕",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2025-02-09"
+  },
+  {
+    "title": "新名劍風流",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2025-01-04"
+  },
+  {
+    "title": "新武林外史",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2024-12-07"
+  },
+  {
+    "title": "琅琊榜",
+    "author": "海宴",
+    "category": "歷史小說",
+    "readDate": "2024-11-26"
+  },
+  {
+    "title": "投資心智 : 邁向財務自由的十二則練習 風靡全美的人生增值術",
+    "author": "湯恩 (Town, Danielle)",
+    "category": "投資心理",
     "readDate": "2024-11-10"
   },
   {
-    "title": "刻意練習",
-    "author": "Anders Ericsson",
-    "category": "學習",
-    "readDate": "2025-08-21"
+    "title": "長相思",
+    "author": "桐華",
+    "category": "奇幻小說",
+    "readDate": "2024-11-10"
+  },
+  {
+    "title": "長相思. 卷五, 生相依, 死相隨",
+    "author": "桐華",
+    "category": "奇幻小說",
+    "readDate": "2024-11-06"
+  },
+  {
+    "title": "長相思. 卷六, 長相守, 不分離",
+    "author": "桐華",
+    "category": "奇幻小說",
+    "readDate": "2024-11-06"
+  },
+  {
+    "title": "長相思. 卷三, 思一寸, 愁千縷",
+    "author": "桐華",
+    "category": "奇幻小說",
+    "readDate": "2024-10-26"
+  },
+  {
+    "title": "長相思. 卷四, 笑問月, 誰與共",
+    "author": "桐華",
+    "category": "奇幻小說",
+    "readDate": "2024-10-26"
+  },
+  {
+    "title": "長相思. 卷二, 人依舊, 終離別",
+    "author": "桐華",
+    "category": "奇幻小說",
+    "readDate": "2024-10-19"
+  },
+  {
+    "title": "新流星. 蝴蝶. 劍",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2024-10-12"
+  },
+  {
+    "title": "Clean Architecture實作篇 : 在整潔的架構上弄髒你的手",
+    "author": "Tom Hombergs",
+    "category": "軟體工程",
+    "readDate": "2024-09-14"
+  },
+  {
+    "title": "九月鷹飛",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2024-09-14"
+  },
+  {
+    "title": "C#最強入門邁向頂尖高手之路王者歸來",
+    "author": "洪錦魁",
+    "category": "程式設計",
+    "readDate": "2024-09-03"
+  },
+  {
+    "title": "邊城浪子",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2024-08-24"
+  },
+  {
+    "title": "天涯.明月.刀",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2024-08-23"
+  },
+  {
+    "title": "華爾街操盤手給年輕人的15堂理財課",
+    "author": "闕又上",
+    "category": "投資理財",
+    "readDate": "2024-07-20"
+  },
+  {
+    "title": "多情劍客無情劍",
+    "author": "古龍",
+    "category": "武俠小說",
+    "readDate": "2024-07-17"
+  },
+  {
+    "title": "巫王志",
+    "author": "鄭丰",
+    "category": "奇幻小說",
+    "readDate": "2024-06-30"
+  },
+  {
+    "title": "神偷天下",
+    "author": "鄭丰",
+    "category": "武俠小說",
+    "readDate": "2024-05-21"
+  },
+  {
+    "title": "悶蛋小鎮",
+    "author": "張友漁",
+    "category": "青少年小說",
+    "readDate": "2024-05-13"
+  },
+  {
+    "title": "Witch switch",
+    "author": "Pounder, Sibéal",
+    "category": "奇幻小說",
+    "readDate": "2024-03-22"
+  },
+  {
+    "title": "夏日之詩",
+    "author": "藤井樹",
+    "category": "愛情小說",
+    "readDate": "2024-03-22"
+  },
+  {
+    "title": "靈劍",
+    "author": "鄭丰",
+    "category": "武俠小說",
+    "readDate": "2024-03-22"
+  },
+  {
+    "title": "真情書",
+    "author": "藤井樹",
+    "category": "愛情小說",
+    "readDate": "2024-03-09"
+  },
+  {
+    "title": "New TOEIC TEST全方位文法攻略",
+    "author": "中村紳一郎",
+    "category": "英語學習",
+    "readDate": "2024-02-18"
+  },
+  {
+    "title": "奇峰異石傳",
+    "author": "鄭丰",
+    "category": "武俠小說",
+    "readDate": "2024-02-15"
+  },
+  {
+    "title": "生死谷",
+    "author": "鄭丰",
+    "category": "武俠小說",
+    "readDate": "2024-01-21"
+  },
+  {
+    "title": "天觀雙俠",
+    "author": "鄭丰",
+    "category": "武俠小說",
+    "readDate": "2023-11-17"
+  },
+  {
+    "title": "這城市 : B棟11樓第二部",
+    "author": "藤井樹",
+    "category": "愛情小說",
+    "readDate": "2023-11-17"
+  },
+  {
+    "title": "愛上麥當勞",
+    "author": "藍狐",
+    "category": "愛情小說",
+    "readDate": "2023-11-15"
+  },
+  {
+    "title": "連城訣",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2023-11-03"
+  },
+  {
+    "title": "這是我的答案",
+    "author": "藤井樹",
+    "category": "愛情小說",
+    "readDate": "2023-10-20"
+  },
+  {
+    "title": "貓空愛情故事",
+    "author": "藤井樹",
+    "category": "愛情小說",
+    "readDate": "2023-10-13"
+  },
+  {
+    "title": "B棟11樓",
+    "author": "藤井樹",
+    "category": "愛情小說",
+    "readDate": "2023-10-04"
+  },
+  {
+    "title": "可能幸福的選擇",
+    "author": "Misa",
+    "category": "愛情小說",
+    "readDate": "2023-09-20"
+  },
+  {
+    "title": "我們不結婚,好嗎?",
+    "author": "藤井樹",
+    "category": "愛情小說",
+    "readDate": "2023-09-12"
+  },
+  {
+    "title": "聽笨金魚唱歌",
+    "author": "藤井樹",
+    "category": "愛情小說",
+    "readDate": "2023-09-10"
+  },
+  {
+    "title": "魔戒首部曲 : 魔戒現身",
+    "author": "托爾金",
+    "category": "奇幻小說",
+    "readDate": "2023-08-08"
+  },
+  {
+    "title": "三年K班",
+    "author": "夏茗悠",
+    "category": "愛情小說",
+    "readDate": "2023-07-11"
+  },
+  {
+    "title": "吟遊詩人皮陀故事集",
+    "author": "J.K. 羅琳",
+    "category": "奇幻小說",
+    "readDate": "2023-07-04"
+  },
+  {
+    "title": "穿越歷史的魁地奇",
+    "author": "J.K. 羅琳",
+    "category": "奇幻小說",
+    "readDate": "2023-07-04"
+  },
+  {
+    "title": "哈利波特 : 被詛咒的孩子(第一部&第二部)",
+    "author": "J.K. 羅琳、約翰．帝夫尼、傑克．索恩",
+    "category": "奇幻小說",
+    "readDate": "2023-06-21"
+  },
+  {
+    "title": "怪獸與牠們的產地",
+    "author": "J.K. 羅琳",
+    "category": "奇幻小說",
+    "readDate": "2023-06-16"
+  },
+  {
+    "title": "精通Python : 運用簡單的套件進行現代運算",
+    "author": "Bill Lubanovic",
+    "category": "程式設計",
+    "readDate": "2023-06-01"
+  },
+  {
+    "title": "哈利波特 : 死神的聖物",
+    "author": "J.K. 羅琳",
+    "category": "奇幻小說",
+    "readDate": "2023-05-26"
+  },
+  {
+    "title": "剪刀石頭布",
+    "author": "晨羽",
+    "category": "愛情小說",
+    "readDate": "2023-05-13"
+  },
+  {
+    "title": "哈利波特 : 混血王子的背叛",
+    "author": "J.K. 羅琳",
+    "category": "奇幻小說",
+    "readDate": "2023-05-10"
+  },
+  {
+    "title": "哈利波特 : 鳳凰會的密令",
+    "author": "J.K. 羅琳",
+    "category": "奇幻小說",
+    "readDate": "2023-04-15"
+  },
+  {
+    "title": "打動人心的產品設計 : 頂尖設計師打造成功產品的黃金法則",
+    "author": "Scott Hurff",
+    "category": "產品設計",
+    "readDate": "2023-03-11"
+  },
+  {
+    "title": "哈利波特 : 火盃的考驗",
+    "author": "J.K. 羅琳",
+    "category": "奇幻小說",
+    "readDate": "2023-02-07"
+  },
+  {
+    "title": "暗渡陳倉 : 大變動的先行者張良",
+    "author": "張英慧",
+    "category": "歷史小說",
+    "readDate": "2023-01-27"
+  },
+  {
+    "title": "哈利波特 : 消失的密室",
+    "author": "J.K. 羅琳",
+    "category": "奇幻小說",
+    "readDate": "2023-01-14"
+  },
+  {
+    "title": "哈利波特 : 阿茲卡班的逃犯",
+    "author": "J.K. 羅琳",
+    "category": "奇幻小說",
+    "readDate": "2023-01-14"
+  },
+  {
+    "title": "哈利波特 : 神秘的魔法石",
+    "author": "J.K. 羅琳",
+    "category": "奇幻小說",
+    "readDate": "2023-01-07"
+  },
+  {
+    "title": "圖解實用新產品開發與研發管理 : 圖解讓產品開發更簡單",
+    "author": "張哲朗",
+    "category": "產品管理",
+    "readDate": "2023-01-07"
+  },
+  {
+    "title": "金銀島",
+    "author": "史蒂文生",
+    "category": "冒險小說",
+    "readDate": "2023-01-07"
+  },
+  {
+    "title": "俠客行. 3, 石壁古詩",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-12-31"
+  },
+  {
+    "title": "俠客行. 4, 越女劍",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-12-31"
+  },
+  {
+    "title": "俠客行",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-12-20"
+  },
+  {
+    "title": "俠客行. 2, 賞善罰惡",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-12-20"
+  },
+  {
+    "title": "飛狐外傳",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-11-12"
+  },
+  {
+    "title": "雪山飛狐",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-10-29"
+  },
+  {
+    "title": "書劍恩仇錄",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-09-26"
+  },
+  {
+    "title": "活寶 : 鳥龍院精彩大長篇",
+    "author": "敖幼祥",
+    "category": "漫畫",
+    "readDate": "2022-09-24"
+  },
+  {
+    "title": "碧血劍",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-09-18"
+  },
+  {
+    "title": "鹿鼎記. 10, 告老退休",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-09-15"
+  },
+  {
+    "title": "鹿鼎記. 9, 智取神龍",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-09-15"
+  },
+  {
+    "title": "鹿鼎記. 7, 咬牙切齒",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-09-07"
+  },
+  {
+    "title": "鹿鼎記. 8, 揚威塞北",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-09-07"
+  },
+  {
+    "title": "鹿鼎記. 5, 少林風波",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-09-03"
+  },
+  {
+    "title": "鹿鼎記. 6, 詭計多端",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-09-03"
+  },
+  {
+    "title": "鹿鼎記. 3, 宮闈絕秘",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-08-31"
+  },
+  {
+    "title": "鹿鼎記. 4, 孤島蛇羣",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-08-31"
+  },
+  {
+    "title": "懶人圖解簡報術 : 把複雜知識變成一看就秒懂的圖解懶人包",
+    "author": "林長揚",
+    "category": "簡報表達",
+    "readDate": "2022-07-12"
+  },
+  {
+    "title": "極簡溝通 : 世界一流菁英都在用的最強說話術! 只要1分鐘, 提案、簡報、開會、主持、洽商, 統統搞定!",
+    "author": "伊藤羊一",
+    "category": "溝通表達",
+    "readDate": "2022-07-02"
+  },
+  {
+    "title": "交易心態原理 : 避開思維陷阱, 克服決策障礙, 改善投資技巧的大腦革命",
+    "author": "理察.彼得森(Richard L. Peterson)",
+    "category": "投資心理",
+    "readDate": "2022-05-07"
+  },
+  {
+    "title": "為什麼總是買到賠錢股? : 從「行為投資學」解析人類天生不適合交易的樂觀、自信及過度預測等交易症候群",
+    "author": "詹姆斯.蒙蒂爾(James Montier)",
+    "category": "投資心理",
+    "readDate": "2022-05-07"
+  },
+  {
+    "title": "鹿鼎記",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-03-15"
+  },
+  {
+    "title": "笑傲江湖",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2022-01-04"
+  },
+  {
+    "title": "天龍八部",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2021-09-17"
+  },
+  {
+    "title": "倚天屠龍記",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2021-07-26"
+  },
+  {
+    "title": "JavaScript & jQuery : the Missing Manual國際中文版",
+    "author": "David Sawyer McFarland",
+    "category": "前端開發",
+    "readDate": "2021-05-01"
+  },
+  {
+    "title": "你不能錯過的CSS指南 : 實用 × 必用 × 拿來即用的400段程式碼 + 151個範例",
+    "author": "趙榮嬌、任建智",
+    "category": "前端開發",
+    "readDate": "2021-04-17"
+  },
+  {
+    "title": "神鵰俠侶",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2021-03-14"
+  },
+  {
+    "title": "練劍不如練英文 : 英文新貴胡家榮超有效讀書方法大公開",
+    "author": "胡家榮",
+    "category": "英語學習",
+    "readDate": "2021-03-02"
+  },
+  {
+    "title": "網頁程式設計 : HTML+CSS",
+    "author": "陳惠貞",
+    "category": "前端開發",
+    "readDate": "2021-02-10"
+  },
+  {
+    "title": "PHP, MySQL, JavaScript與CSS學習手冊",
+    "author": "Robin Nixon",
+    "category": "網站開發",
+    "readDate": "2021-01-23"
+  },
+  {
+    "title": "射鵰英雄傳",
+    "author": "金庸",
+    "category": "武俠小說",
+    "readDate": "2021-01-03"
   }
 ]
