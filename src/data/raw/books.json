@@ -3,7 +3,20 @@
     "title": "大唐雙龍傳",
     "author": "黃易",
     "category": "武俠小說",
-    "readDate": "2026-03-30"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2026-03-30"
+      },
+      {
+        "volume": "2",
+        "readDate": "2026-03-30"
+      },
+      {
+        "volume": "3",
+        "readDate": "2026-03-30"
+      }
+    ]
   },
   {
     "title": "那些年, 我們一起追的女孩",
@@ -15,43 +28,165 @@
     "title": "武動乾坤",
     "author": "天蠶土豆",
     "category": "玄幻小說",
-    "readDate": "2025-09-12"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2025-09-12"
+      },
+      {
+        "volume": "2",
+        "readDate": "2025-09-12"
+      },
+      {
+        "volume": "3",
+        "readDate": "2025-09-27"
+      },
+      {
+        "volume": "4",
+        "readDate": "2025-09-27"
+      },
+      {
+        "volume": "5",
+        "readDate": "2025-09-27"
+      },
+      {
+        "volume": "6",
+        "readDate": "2025-10-21"
+      },
+      {
+        "volume": "7",
+        "readDate": "2025-10-21"
+      },
+      {
+        "volume": "8",
+        "readDate": "2025-10-21"
+      },
+      {
+        "volume": "9",
+        "readDate": "2025-11-18"
+      },
+      {
+        "volume": "10",
+        "readDate": "2025-11-18"
+      },
+      {
+        "volume": "11",
+        "readDate": "2025-11-18"
+      },
+      {
+        "volume": "12",
+        "readDate": "2025-12-03"
+      },
+      {
+        "volume": "13",
+        "readDate": "2025-12-03"
+      },
+      {
+        "volume": "14",
+        "readDate": "2025-12-03"
+      },
+      {
+        "volume": "15",
+        "readDate": "2025-12-03"
+      },
+      {
+        "volume": "16",
+        "readDate": "2025-12-27"
+      },
+      {
+        "volume": "17",
+        "readDate": "2025-12-27"
+      },
+      {
+        "volume": "18",
+        "readDate": "2025-12-27"
+      },
+      {
+        "volume": "19",
+        "readDate": "2025-12-27"
+      },
+      {
+        "volume": "20",
+        "readDate": "2026-01-10"
+      },
+      {
+        "volume": "21",
+        "readDate": "2026-01-13"
+      },
+      {
+        "volume": "22",
+        "readDate": "2026-01-13"
+      },
+      {
+        "volume": "23",
+        "readDate": "2026-01-13"
+      },
+      {
+        "volume": "24",
+        "readDate": "2026-01-22"
+      },
+      {
+        "volume": "25",
+        "readDate": "2026-01-22"
+      },
+      {
+        "volume": "26",
+        "readDate": "2026-01-22"
+      },
+      {
+        "volume": "27",
+        "readDate": "2026-01-22"
+      },
+      {
+        "volume": "28",
+        "readDate": "2026-02-13"
+      },
+      {
+        "volume": "29",
+        "readDate": "2026-02-13"
+      },
+      {
+        "volume": "30",
+        "readDate": "2026-02-13"
+      }
+    ]
   },
   {
-    "title": "楚留香新傳. 五, 新月傳奇",
+    "title": "楚留香新傳",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2025-07-12"
-  },
-  {
-    "title": "楚留香新傳. 六, 午夜蘭花",
-    "author": "古龍",
-    "category": "武俠小說",
-    "readDate": "2025-07-12"
-  },
-  {
-    "title": "楚留香新傳. 四, 桃花傳奇",
-    "author": "古龍",
-    "category": "武俠小說",
-    "readDate": "2025-07-12"
-  },
-  {
-    "title": "楚留香新傳. 一, 借屍還魂",
-    "author": "古龍",
-    "category": "武俠小說",
-    "readDate": "2025-07-01"
-  },
-  {
-    "title": "楚留香新傳. 三, 蝙蝠傳奇(下)",
-    "author": "古龍",
-    "category": "武俠小說",
-    "readDate": "2025-07-01"
-  },
-  {
-    "title": "楚留香新傳. 二, 蝙蝠傳奇(上)",
-    "author": "古龍",
-    "category": "武俠小說",
-    "readDate": "2025-07-01"
+    "volumes": [
+      {
+        "volume": "1",
+        "subtitle": "借屍還魂",
+        "readDate": "2025-07-01"
+      },
+      {
+        "volume": "2",
+        "subtitle": "蝙蝠傳奇(上)",
+        "readDate": "2025-07-01"
+      },
+      {
+        "volume": "3",
+        "subtitle": "蝙蝠傳奇(下)",
+        "readDate": "2025-07-01"
+      },
+      {
+        "volume": "4",
+        "subtitle": "桃花傳奇",
+        "readDate": "2025-07-12"
+      },
+      {
+        "volume": "5",
+        "subtitle": "新月傳奇",
+        "readDate": "2025-07-12"
+      },
+      {
+        "volume": "6",
+        "subtitle": "午夜蘭花",
+        "readDate": "2025-07-12"
+      }
+    ]
   },
   {
     "title": "被討厭的勇氣 : 自我啟發之父「阿德勒」的教導",
@@ -63,13 +198,39 @@
     "title": "七種武器",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2025-04-26"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2025-04-26"
+      },
+      {
+        "volume": "2",
+        "readDate": "2025-04-26"
+      },
+      {
+        "volume": "3",
+        "readDate": "2025-04-26"
+      },
+      {
+        "volume": "4",
+        "readDate": "2025-04-26"
+      }
+    ]
   },
   {
     "title": "火併蕭十一郎",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2025-04-26"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2025-04-26"
+      },
+      {
+        "volume": "2",
+        "readDate": "2025-04-26"
+      }
+    ]
   },
   {
     "title": "非虛構寫作指南 : 從構思、下筆到寫出風格, 橫跨兩世紀, 影響百萬人的寫作聖經",
@@ -81,10 +242,23 @@
     "title": "蕭十一郎",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2025-03-11"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2025-03-11"
+      },
+      {
+        "volume": "2",
+        "readDate": "2025-03-11"
+      },
+      {
+        "volume": "3",
+        "readDate": "2025-03-11"
+      }
+    ]
   },
   {
-    "title": "杏花渡傳說 : 鄭丰武俠短篇精選集",
+    "title": "杏花渡傳說",
     "author": "鄭丰",
     "category": "武俠小說",
     "readDate": "2025-03-08"
@@ -93,31 +267,180 @@
     "title": "綾羅歌",
     "author": "鄭丰",
     "category": "武俠小說",
-    "readDate": "2025-03-08"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2025-03-08"
+      },
+      {
+        "volume": "2",
+        "readDate": "2025-03-08"
+      },
+      {
+        "volume": "3",
+        "readDate": "2025-03-08"
+      },
+      {
+        "volume": "4",
+        "readDate": "2025-03-08"
+      }
+    ]
   },
   {
     "title": "新絕代雙驕",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2025-02-09"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2025-02-09"
+      },
+      {
+        "volume": "2",
+        "readDate": "2025-02-09"
+      },
+      {
+        "volume": "3",
+        "readDate": "2025-02-09"
+      },
+      {
+        "volume": "4",
+        "readDate": "2025-02-09"
+      },
+      {
+        "volume": "5",
+        "readDate": "2025-02-09"
+      },
+      {
+        "volume": "6",
+        "readDate": "2025-02-09"
+      },
+      {
+        "volume": "7",
+        "readDate": "2025-02-09"
+      },
+      {
+        "volume": "8",
+        "readDate": "2025-02-09"
+      },
+      {
+        "volume": "9",
+        "readDate": "2025-02-09"
+      },
+      {
+        "volume": "10",
+        "readDate": "2025-02-09"
+      }
+    ]
   },
   {
     "title": "新名劍風流",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2025-01-04"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2025-01-04"
+      },
+      {
+        "volume": "2",
+        "readDate": "2025-01-04"
+      },
+      {
+        "volume": "3",
+        "readDate": "2025-01-04"
+      },
+      {
+        "volume": "4",
+        "readDate": "2025-01-04"
+      },
+      {
+        "volume": "5",
+        "readDate": "2025-01-04"
+      },
+      {
+        "volume": "6",
+        "readDate": "2025-01-04"
+      },
+      {
+        "volume": "7",
+        "readDate": "2025-01-04"
+      },
+      {
+        "volume": "8",
+        "readDate": "2025-01-04"
+      }
+    ]
   },
   {
     "title": "新武林外史",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2024-12-07"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-12-07"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-12-07"
+      },
+      {
+        "volume": "3",
+        "readDate": "2024-12-14"
+      },
+      {
+        "volume": "4",
+        "readDate": "2024-12-14"
+      },
+      {
+        "volume": "5",
+        "readDate": "2024-12-14"
+      },
+      {
+        "volume": "6",
+        "readDate": "2024-12-14"
+      },
+      {
+        "volume": "7",
+        "readDate": "2024-12-14"
+      },
+      {
+        "volume": "8",
+        "readDate": "2024-12-14"
+      },
+      {
+        "volume": "9",
+        "readDate": "2024-12-14"
+      },
+      {
+        "volume": "10",
+        "readDate": "2024-12-14"
+      }
+    ]
   },
   {
     "title": "琅琊榜",
     "author": "海宴",
     "category": "歷史小說",
-    "readDate": "2024-11-26"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-11-26"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-11-26"
+      },
+      {
+        "volume": "3",
+        "readDate": "2024-11-26"
+      },
+      {
+        "volume": "4",
+        "readDate": "2024-12-07"
+      }
+    ]
   },
   {
     "title": "投資心智 : 邁向財務自由的十二則練習 風靡全美的人生增值術",
@@ -129,43 +452,61 @@
     "title": "長相思",
     "author": "桐華",
     "category": "奇幻小說",
-    "readDate": "2024-11-10"
-  },
-  {
-    "title": "長相思. 卷五, 生相依, 死相隨",
-    "author": "桐華",
-    "category": "奇幻小說",
-    "readDate": "2024-11-06"
-  },
-  {
-    "title": "長相思. 卷六, 長相守, 不分離",
-    "author": "桐華",
-    "category": "奇幻小說",
-    "readDate": "2024-11-06"
-  },
-  {
-    "title": "長相思. 卷三, 思一寸, 愁千縷",
-    "author": "桐華",
-    "category": "奇幻小說",
-    "readDate": "2024-10-26"
-  },
-  {
-    "title": "長相思. 卷四, 笑問月, 誰與共",
-    "author": "桐華",
-    "category": "奇幻小說",
-    "readDate": "2024-10-26"
-  },
-  {
-    "title": "長相思. 卷二, 人依舊, 終離別",
-    "author": "桐華",
-    "category": "奇幻小說",
-    "readDate": "2024-10-19"
+    "volumes": [
+      {
+        "volume": "1",
+        "subtitle": "孤月下，許君心",
+        "readDate": "2024-11-10"
+      },
+      {
+        "volume": "2",
+        "subtitle": "人依舊, 終離別",
+        "readDate": "2024-10-19"
+      },
+      {
+        "volume": "3",
+        "subtitle": "思一寸, 愁千縷",
+        "readDate": "2024-10-26"
+      },
+      {
+        "volume": "4",
+        "subtitle": "笑問月, 誰與共",
+        "readDate": "2024-10-26"
+      },
+      {
+        "volume": "5",
+        "subtitle": "生相依, 死相隨",
+        "readDate": "2024-11-06"
+      },
+      {
+        "volume": "6",
+        "subtitle": "長相守, 不分離",
+        "readDate": "2024-11-06"
+      }
+    ]
   },
   {
     "title": "新流星. 蝴蝶. 劍",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2024-10-12"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-10-12"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-10-12"
+      },
+      {
+        "volume": "3",
+        "readDate": "2024-10-12"
+      },
+      {
+        "volume": "4",
+        "readDate": "2024-10-12"
+      }
+    ]
   },
   {
     "title": "Clean Architecture實作篇 : 在整潔的架構上弄髒你的手",
@@ -177,7 +518,28 @@
     "title": "九月鷹飛",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2024-09-14"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-09-14"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-09-14"
+      },
+      {
+        "volume": "3",
+        "readDate": "2024-09-28"
+      },
+      {
+        "volume": "4",
+        "readDate": "2024-09-28"
+      },
+      {
+        "volume": "5",
+        "readDate": "2024-09-28"
+      }
+    ]
   },
   {
     "title": "C#最強入門邁向頂尖高手之路王者歸來",
@@ -189,13 +551,39 @@
     "title": "邊城浪子",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2024-08-24"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-08-24"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-08-24"
+      },
+      {
+        "volume": "3",
+        "readDate": "2024-08-24"
+      },
+      {
+        "volume": "4",
+        "readDate": "2024-08-24"
+      }
+    ]
   },
   {
     "title": "天涯.明月.刀",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2024-08-23"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-08-23"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-08-23"
+      }
+    ]
   },
   {
     "title": "華爾街操盤手給年輕人的15堂理財課",
@@ -207,19 +595,78 @@
     "title": "多情劍客無情劍",
     "author": "古龍",
     "category": "武俠小說",
-    "readDate": "2024-07-17"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-07-20"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-07-20"
+      },
+      {
+        "volume": "3",
+        "readDate": "2024-07-20"
+      },
+      {
+        "volume": "4",
+        "readDate": "2024-07-20"
+      },
+      {
+        "volume": "5",
+        "readDate": "2024-07-30"
+      },
+      {
+        "volume": "6",
+        "readDate": "2024-07-30"
+      }
+    ]
   },
   {
     "title": "巫王志",
     "author": "鄭丰",
     "category": "奇幻小說",
-    "readDate": "2024-06-30"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-06-15"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-06-16"
+      },
+      {
+        "volume": "3",
+        "readDate": "2024-06-21"
+      },
+      {
+        "volume": "4",
+        "readDate": "2024-06-28"
+      },
+      {
+        "volume": "5",
+        "readDate": "2024-06-28"
+      }
+    ]
   },
   {
     "title": "神偷天下",
     "author": "鄭丰",
     "category": "武俠小說",
-    "readDate": "2024-05-21"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-05-21"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-05-27"
+      },
+      {
+        "volume": "3",
+        "readDate": "2024-06-02"
+      }
+    ]
   },
   {
     "title": "悶蛋小鎮",
@@ -243,7 +690,24 @@
     "title": "靈劍",
     "author": "鄭丰",
     "category": "武俠小說",
-    "readDate": "2024-03-22"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-03-22"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-05-04"
+      },
+      {
+        "volume": "3",
+        "readDate": "2024-05-04"
+      },
+      {
+        "volume": "4",
+        "readDate": "2024-05-27"
+      }
+    ]
   },
   {
     "title": "真情書",
@@ -261,19 +725,62 @@
     "title": "奇峰異石傳",
     "author": "鄭丰",
     "category": "武俠小說",
-    "readDate": "2024-02-15"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-02-18"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-02-18"
+      },
+      {
+        "volume": "3",
+        "readDate": "2024-03-09"
+      }
+    ]
   },
   {
     "title": "生死谷",
     "author": "鄭丰",
     "category": "武俠小說",
-    "readDate": "2024-01-21"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2024-01-21"
+      },
+      {
+        "volume": "2",
+        "readDate": "2024-02-03"
+      },
+      {
+        "volume": "3",
+        "readDate": "2024-02-03"
+      }
+    ]
   },
   {
     "title": "天觀雙俠",
     "author": "鄭丰",
     "category": "武俠小說",
-    "readDate": "2023-11-17"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2023-11-21"
+      },
+      {
+        "volume": "2",
+        "readDate": "2023-11-28"
+      },
+      {
+        "volume": "3",
+        "readDate": "2023-12-06"
+      },
+      {
+        "volume": "4",
+        "readDate": "2023-12-13"
+      }
+    ]
   },
   {
     "title": "這城市 : B棟11樓第二部",
@@ -372,28 +879,10 @@
     "readDate": "2023-06-01"
   },
   {
-    "title": "哈利波特 : 死神的聖物",
-    "author": "J.K. 羅琳",
-    "category": "奇幻小說",
-    "readDate": "2023-05-26"
-  },
-  {
     "title": "剪刀石頭布",
     "author": "晨羽",
     "category": "愛情小說",
     "readDate": "2023-05-13"
-  },
-  {
-    "title": "哈利波特 : 混血王子的背叛",
-    "author": "J.K. 羅琳",
-    "category": "奇幻小說",
-    "readDate": "2023-05-10"
-  },
-  {
-    "title": "哈利波特 : 鳳凰會的密令",
-    "author": "J.K. 羅琳",
-    "category": "奇幻小說",
-    "readDate": "2023-04-15"
   },
   {
     "title": "打動人心的產品設計 : 頂尖設計師打造成功產品的黃金法則",
@@ -402,34 +891,52 @@
     "readDate": "2023-03-11"
   },
   {
-    "title": "哈利波特 : 火盃的考驗",
-    "author": "J.K. 羅琳",
-    "category": "奇幻小說",
-    "readDate": "2023-02-07"
-  },
-  {
     "title": "暗渡陳倉 : 大變動的先行者張良",
     "author": "張英慧",
     "category": "歷史小說",
     "readDate": "2023-01-27"
   },
   {
-    "title": "哈利波特 : 消失的密室",
+    "title": "哈利波特",
     "author": "J.K. 羅琳",
     "category": "奇幻小說",
-    "readDate": "2023-01-14"
-  },
-  {
-    "title": "哈利波特 : 阿茲卡班的逃犯",
-    "author": "J.K. 羅琳",
-    "category": "奇幻小說",
-    "readDate": "2023-01-14"
-  },
-  {
-    "title": "哈利波特 : 神秘的魔法石",
-    "author": "J.K. 羅琳",
-    "category": "奇幻小說",
-    "readDate": "2023-01-07"
+    "volumes": [
+      {
+        "volume": "1",
+        "subtitle": "神秘的魔法石",
+        "readDate": "2023-01-07"
+      },
+      {
+        "volume": "2",
+        "subtitle": "消失的密室",
+        "readDate": "2023-01-14"
+      },
+      {
+        "volume": "3",
+        "subtitle": "阿茲卡班的逃犯",
+        "readDate": "2023-01-14"
+      },
+      {
+        "volume": "4",
+        "subtitle": "火盃的考驗",
+        "readDate": "2023-02-07"
+      },
+      {
+        "volume": "5",
+        "subtitle": "鳳凰會的密令",
+        "readDate": "2023-04-15"
+      },
+      {
+        "volume": "6",
+        "subtitle": "混血王子的背叛",
+        "readDate": "2023-05-10"
+      },
+      {
+        "volume": "7",
+        "subtitle": "死神的聖物",
+        "readDate": "2023-05-26"
+      }
+    ]
   },
   {
     "title": "圖解實用新產品開發與研發管理 : 圖解讓產品開發更簡單",
@@ -444,34 +951,42 @@
     "readDate": "2023-01-07"
   },
   {
-    "title": "俠客行. 3, 石壁古詩",
-    "author": "金庸",
-    "category": "武俠小說",
-    "readDate": "2022-12-31"
-  },
-  {
-    "title": "俠客行. 4, 越女劍",
-    "author": "金庸",
-    "category": "武俠小說",
-    "readDate": "2022-12-31"
-  },
-  {
     "title": "俠客行",
     "author": "金庸",
     "category": "武俠小說",
-    "readDate": "2022-12-20"
-  },
-  {
-    "title": "俠客行. 2, 賞善罰惡",
-    "author": "金庸",
-    "category": "武俠小說",
-    "readDate": "2022-12-20"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2022-12-20"
+      },
+      {
+        "volume": "2",
+        "readDate": "2022-12-20"
+      },
+      {
+        "volume": "3",
+        "readDate": "2022-12-31"
+      },
+      {
+        "volume": "4",
+        "readDate": "2022-12-31"
+      }
+    ]
   },
   {
     "title": "飛狐外傳",
     "author": "金庸",
     "category": "武俠小說",
-    "readDate": "2022-11-12"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2022-11-12"
+      },
+      {
+        "volume": "2",
+        "readDate": "2022-11-12"
+      }
+    ]
   },
   {
     "title": "雪山飛狐",
@@ -483,7 +998,16 @@
     "title": "書劍恩仇錄",
     "author": "金庸",
     "category": "武俠小說",
-    "readDate": "2022-09-26"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2022-09-26"
+      },
+      {
+        "volume": "2",
+        "readDate": "2022-09-26"
+      }
+    ]
   },
   {
     "title": "活寶 : 鳥龍院精彩大長篇",
@@ -495,55 +1019,59 @@
     "title": "碧血劍",
     "author": "金庸",
     "category": "武俠小說",
-    "readDate": "2022-09-18"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2022-09-18"
+      },
+      {
+        "volume": "2",
+        "readDate": "2022-09-18"
+      }
+    ]
   },
   {
-    "title": "鹿鼎記. 10, 告老退休",
+    "title": "鹿鼎記",
     "author": "金庸",
     "category": "武俠小說",
-    "readDate": "2022-09-15"
-  },
-  {
-    "title": "鹿鼎記. 9, 智取神龍",
-    "author": "金庸",
-    "category": "武俠小說",
-    "readDate": "2022-09-15"
-  },
-  {
-    "title": "鹿鼎記. 7, 咬牙切齒",
-    "author": "金庸",
-    "category": "武俠小說",
-    "readDate": "2022-09-07"
-  },
-  {
-    "title": "鹿鼎記. 8, 揚威塞北",
-    "author": "金庸",
-    "category": "武俠小說",
-    "readDate": "2022-09-07"
-  },
-  {
-    "title": "鹿鼎記. 5, 少林風波",
-    "author": "金庸",
-    "category": "武俠小說",
-    "readDate": "2022-09-03"
-  },
-  {
-    "title": "鹿鼎記. 6, 詭計多端",
-    "author": "金庸",
-    "category": "武俠小說",
-    "readDate": "2022-09-03"
-  },
-  {
-    "title": "鹿鼎記. 3, 宮闈絕秘",
-    "author": "金庸",
-    "category": "武俠小說",
-    "readDate": "2022-08-31"
-  },
-  {
-    "title": "鹿鼎記. 4, 孤島蛇羣",
-    "author": "金庸",
-    "category": "武俠小說",
-    "readDate": "2022-08-31"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2022-03-15"
+      },
+      {
+        "volume": "3",
+        "readDate": "2022-08-31"
+      },
+      {
+        "volume": "4",
+        "readDate": "2022-08-31"
+      },
+      {
+        "volume": "5",
+        "readDate": "2022-09-03"
+      },
+      {
+        "volume": "6",
+        "readDate": "2022-09-03"
+      },
+      {
+        "volume": "7",
+        "readDate": "2022-09-07"
+      },
+      {
+        "volume": "8",
+        "readDate": "2022-09-07"
+      },
+      {
+        "volume": "9",
+        "readDate": "2022-09-15"
+      },
+      {
+        "volume": "10",
+        "readDate": "2022-09-15"
+      }
+    ]
   },
   {
     "title": "懶人圖解簡報術 : 把複雜知識變成一看就秒懂的圖解懶人包",
@@ -570,28 +1098,77 @@
     "readDate": "2022-05-07"
   },
   {
-    "title": "鹿鼎記",
-    "author": "金庸",
-    "category": "武俠小說",
-    "readDate": "2022-03-15"
-  },
-  {
     "title": "笑傲江湖",
     "author": "金庸",
     "category": "武俠小說",
-    "readDate": "2022-01-04"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2022-01-04"
+      },
+      {
+        "volume": "2",
+        "readDate": "2022-01-04"
+      },
+      {
+        "volume": "3",
+        "readDate": "2022-01-04"
+      },
+      {
+        "volume": "4",
+        "readDate": "2022-01-04"
+      }
+    ]
   },
   {
     "title": "天龍八部",
     "author": "金庸",
     "category": "武俠小說",
-    "readDate": "2021-09-17"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2021-09-17"
+      },
+      {
+        "volume": "2",
+        "readDate": "2021-09-17"
+      },
+      {
+        "volume": "3",
+        "readDate": "2021-09-17"
+      },
+      {
+        "volume": "4",
+        "readDate": "2021-09-17"
+      },
+      {
+        "volume": "5",
+        "readDate": "2021-09-17"
+      }
+    ]
   },
   {
     "title": "倚天屠龍記",
     "author": "金庸",
     "category": "武俠小說",
-    "readDate": "2021-07-26"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2021-07-26"
+      },
+      {
+        "volume": "2",
+        "readDate": "2021-07-26"
+      },
+      {
+        "volume": "3",
+        "readDate": "2021-07-26"
+      },
+      {
+        "volume": "4",
+        "readDate": "2021-07-26"
+      }
+    ]
   },
   {
     "title": "JavaScript & jQuery : the Missing Manual國際中文版",
@@ -609,7 +1186,24 @@
     "title": "神鵰俠侶",
     "author": "金庸",
     "category": "武俠小說",
-    "readDate": "2021-03-14"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2021-03-14"
+      },
+      {
+        "volume": "2",
+        "readDate": "2021-03-14"
+      },
+      {
+        "volume": "3",
+        "readDate": "2021-03-14"
+      },
+      {
+        "volume": "4",
+        "readDate": "2021-03-14"
+      }
+    ]
   },
   {
     "title": "練劍不如練英文 : 英文新貴胡家榮超有效讀書方法大公開",
@@ -633,6 +1227,23 @@
     "title": "射鵰英雄傳",
     "author": "金庸",
     "category": "武俠小說",
-    "readDate": "2021-01-03"
+    "volumes": [
+      {
+        "volume": "1",
+        "readDate": "2021-01-03"
+      },
+      {
+        "volume": "2",
+        "readDate": "2021-01-03"
+      },
+      {
+        "volume": "3",
+        "readDate": "2021-01-03"
+      },
+      {
+        "volume": "4",
+        "readDate": "2021-01-03"
+      }
+    ]
   }
 ]

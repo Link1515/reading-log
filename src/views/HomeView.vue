@@ -24,6 +24,7 @@ const fuse = new Fuse(books, {
   keys: [
     { name: 'title', weight: 0.6 },
     { name: 'author', weight: 0.4 },
+    { name: 'searchText', weight: 0.3 },
   ],
   threshold: 0.35,
   ignoreLocation: true,
@@ -68,11 +69,11 @@ const filteredBooks = computed(() => {
 
   return searchResults
     .filter((book) => {
-      if (filters.startDate && book.readDate < filters.startDate) {
+      if (filters.startDate && book.endReadDate < filters.startDate) {
         return false
       }
 
-      if (filters.endDate && book.readDate > filters.endDate) {
+      if (filters.endDate && book.startReadDate > filters.endDate) {
         return false
       }
 
@@ -82,7 +83,14 @@ const filteredBooks = computed(() => {
 })
 
 const resultSummary = computed(() => {
-  const count = filteredBooks.value.length
+  const count = filteredBooks.value.reduce((total, book) => {
+    if (book.type === 'series' && Array.isArray(book.volumes) && book.volumes.length > 0) {
+      return total + book.volumes.length
+    }
+
+    return total + 1
+  }, 0)
+
   return `共 ${count} 本書`
 })
 
@@ -200,7 +208,6 @@ onBeforeUnmount(() => {
               class="collapse-icon"
             />
           </button>
-          <p class="search-summary">{{ resultSummary }}</p>
         </div>
 
         <Transition name="collapse-panel">
@@ -234,6 +241,8 @@ onBeforeUnmount(() => {
       <p class="active-search-keyword">「{{ activeKeyword }}」</p>
     </section>
 
-    <BookList :books="filteredBooks" />
+    <p class="search-summary list-summary">{{ resultSummary }}</p>
+
+    <BookList :books="filteredBooks" :keyword="filters.keyword" />
   </main>
 </template>

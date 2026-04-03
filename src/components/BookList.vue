@@ -6,13 +6,17 @@ defineProps({
     type: Array,
     required: true,
   },
+  keyword: {
+    type: String,
+    default: '',
+  },
 })
 </script>
 
 <template>
   <section class="list-section">
     <ul v-if="books.length" class="book-list" aria-label="書籍清單">
-      <BookListItem v-for="book in books" :key="book.id" :book="book" />
+      <BookListItem v-for="book in books" :key="book.id" :book="book" :keyword="keyword" />
     </ul>
 
     <div v-else class="empty-state">
