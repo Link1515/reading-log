@@ -4,10 +4,7 @@
   line-height: 1.5;
   font-weight: 400;
   color: #f3f2f1;
-  background:
-    radial-gradient(circle at top left, rgba(96, 205, 255, 0.14), transparent 24%),
-    radial-gradient(circle at top right, rgba(124, 93, 250, 0.14), transparent 18%),
-    linear-gradient(180deg, #0f1116 0%, #090a0d 100%);
+  background-color: #090a0d;
   font-synthesis: none;
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
@@ -25,9 +22,30 @@
   box-sizing: border-box;
 }
 
+html {
+  min-height: 100%;
+  background-color: #090a0d;
+}
+
 body {
   margin: 0;
   min-width: 320px;
+  min-height: 100vh;
+  position: relative;
+  background-color: #090a0d;
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  background:
+    radial-gradient(120% 88% at 12% 0%, rgba(96, 205, 255, 0.18) 0%, transparent 38%),
+    radial-gradient(86% 72% at 100% 0%, rgba(88, 105, 255, 0.18) 0%, transparent 34%),
+    radial-gradient(72% 60% at 50% -8%, rgba(255, 255, 255, 0.035) 0%, transparent 42%),
+    linear-gradient(180deg, #121722 0%, #0d1118 42%, #090a0d 100%);
+  pointer-events: none;
 }
 
 button,
@@ -37,6 +55,8 @@ select {
 }
 
 #app {
+  position: relative;
+  z-index: 1;
   min-height: 100vh;
 }
 
