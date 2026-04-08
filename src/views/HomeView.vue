@@ -2,6 +2,7 @@
 import { computed, reactive } from 'vue'
 import { Icon } from '@iconify/vue'
 import Fuse from 'fuse.js'
+import AppLayout from '../components/AppLayout.vue'
 import BookFilters from '../components/BookFilters.vue'
 import BookList from '../components/BookList.vue'
 import books from '../data/generated/books.json'
@@ -150,14 +151,8 @@ function resetFilters() {
 </script>
 
 <template>
-  <main class="page-shell">
-    <section class="hero">
-      <p class="eyebrow">Personal Library</p>
-      <h1>閱讀紀錄</h1>
-      <p class="hero-copy">收藏每一次閱讀留下的痕跡</p>
-    </section>
-
-    <section class="search-panel" aria-label="搜尋與篩選">
+  <AppLayout>
+    <template #toolbar>
       <div class="search-toolbar">
         <label class="search-shell" for="global-search">
           <div class="search-input-wrap">
@@ -186,7 +181,9 @@ function resetFilters() {
           <Icon :icon="uiState.showFilters ? 'material-symbols:close-rounded' : 'material-symbols:tune-rounded'" class="collapse-icon" />
         </button>
       </div>
+    </template>
 
+    <template #topbar-extra>
       <Transition name="collapse-panel">
         <div v-if="uiState.showFilters" id="search-filters-panel" class="search-collapse">
           <BookFilters
@@ -202,10 +199,16 @@ function resetFilters() {
           />
         </div>
       </Transition>
+    </template>
+
+    <section class="hero">
+      <p class="eyebrow">Personal Library</p>
+      <h1>閱讀紀錄</h1>
+      <p class="hero-copy">收藏每一次閱讀留下的痕跡</p>
     </section>
 
     <p class="search-summary list-summary">{{ resultSummary }}</p>
 
     <BookList :books="filteredBooks" :keyword="filters.keyword" />
-  </main>
+  </AppLayout>
 </template>

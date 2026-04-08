@@ -62,19 +62,37 @@ select {
   min-height: 100vh;
 }
 
-.app-header {
+.app-layout {
+  min-height: 100vh;
+}
+
+.layout-topbar {
   position: sticky;
-  top: 0;
+  top: 16px;
   z-index: 20;
+  width: min(1120px, calc(100% - 32px));
+  margin: 0 auto 20px;
+  padding: 18px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  background: rgba(26, 29, 36, 0.88);
   backdrop-filter: blur(18px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.2);
+}
+
+.layout-topbar-main {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  gap: 18px;
+  align-items: center;
 }
 
 .app-nav {
   display: flex;
   gap: 10px;
-  width: min(1120px, calc(100% - 32px));
-  margin: 0 auto;
-  padding: 18px 0 0;
+  width: auto;
+  margin: 0;
+  padding: 0;
 }
 
 .app-nav-link {
@@ -118,15 +136,12 @@ select {
   padding: 48px 0 72px;
 }
 
-.search-panel {
-  position: sticky;
-  top: 16px;
-  z-index: 10;
-  margin-bottom: 20px;
-  padding: 18px;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 20px;
-  background: #1a1d24;
+.search-toolbar {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  min-width: 0;
 }
 
 .search-shell {
@@ -143,7 +158,7 @@ select {
   min-height: 42px;
   padding: 0 44px 0 16px;
   border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 12px;
+  border-radius: 20px;
   background: rgba(43, 46, 54, 0.92);
   color: inherit;
   font-size: 1rem;
@@ -183,13 +198,6 @@ select {
 .list-summary {
   margin-top: 4px;
   margin-bottom: 0;
-}
-
-.search-toolbar {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 16px;
 }
 
 .collapse-toggle {
@@ -624,6 +632,10 @@ select.control {
 }
 
 @media (max-width: 900px) {
+  .layout-topbar-main {
+    grid-template-columns: 1fr;
+  }
+
   .field,
   .reset-button {
     grid-column: span 6;
@@ -640,8 +652,7 @@ select.control {
 
 @media (max-width: 640px) {
   .app-nav {
-    width: min(100% - 20px, 1120px);
-    padding-top: 14px;
+    width: 100%;
     overflow-x: auto;
   }
 
@@ -650,17 +661,14 @@ select.control {
     padding: 28px 0 48px;
   }
 
-  .search-panel {
-    position: sticky;
+  .layout-topbar {
     top: 12px;
+    width: min(100% - 20px, 1120px);
     padding: 14px;
     border-radius: 16px;
   }
 
   .search-toolbar {
-    position: sticky;
-    top: 0;
-    z-index: 2;
     align-items: stretch;
   }
 
