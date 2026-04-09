@@ -1,11 +1,11 @@
 <script setup>
 import { computed, onBeforeUnmount, onMounted, ref } from 'vue'
-import { Pie } from 'vue-chartjs'
-import { ArcElement, Chart as ChartJS, Legend, Tooltip } from 'chart.js'
+import { Bar, Pie } from 'vue-chartjs'
+import { ArcElement, BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Tooltip } from 'chart.js'
 import AppLayout from '../components/AppLayout.vue'
 import books from '../data/generated/books.json'
 
-ChartJS.register(ArcElement, Tooltip, Legend)
+ChartJS.register(ArcElement, BarElement, CategoryScale, LinearScale, Tooltip, Legend)
 
 const PIE_COLORS = ['#60cdff', '#4f7cff', '#43d3c5', '#f59e0b', '#f97373', '#a78bfa', '#34d399', '#f472b6']
 
@@ -25,6 +25,7 @@ function updateViewportWidth() {
 
 const totalReadCount = computed(() => books.reduce((total, book) => total + getReadCount(book), 0))
 const totalCategoryCount = computed(() => new Set(books.map(book => book.category)).size)
+const totalAuthorCount = computed(() => new Set(books.map(book => book.author)).size)
 
 const categoryStats = computed(() => {
   const categoryCountMap = new Map()
@@ -62,6 +63,38 @@ const categoryStats = computed(() => {
 })
 
 const topCategory = computed(() => categoryStats.value[0] ?? null)
+
+const authorStats = computed(() => {
+  const authorCountMap = new Map()
+
+  for (const book of books) {
+    const readCount = getReadCount(book)
+    const currentCount = authorCountMap.get(book.author) ?? 0
+    authorCountMap.set(book.author, currentCount + readCount)
+  }
+
+  const rankedAuthors = [...authorCountMap.entries()]
+    .toSorted((left, right) => right[1] - left[1] || left[0].localeCompare(right[0], 'zh-Hant'))
+    .map(([author, count], index) => ({
+      author,
+      count,
+      color: PIE_COLORS[index % PIE_COLORS.length],
+    }))
+
+  if (rankedAuthors.length <= MAX_VISIBLE_CATEGORIES) {
+    return rankedAuthors.map(entry => ({
+      ...entry,
+      percentage: totalReadCount.value === 0 ? '0.0' : ((entry.count / totalReadCount.value) * 100).toFixed(1),
+    }))
+  }
+
+  return rankedAuthors.slice(0, MAX_VISIBLE_CATEGORIES).map(entry => ({
+    ...entry,
+    percentage: totalReadCount.value === 0 ? '0.0' : ((entry.count / totalReadCount.value) * 100).toFixed(1),
+  }))
+})
+
+const topAuthor = computed(() => authorStats.value[0] ?? null)
 
 const pieChartData = computed(() => ({
   labels: categoryStats.value.map(slice => slice.category),
@@ -140,6 +173,78 @@ const pieChartOptions = computed(() => ({
   },
 }))
 
+const authorChartData = computed(() => ({
+  labels: authorStats.value.map(entry => entry.author),
+  datasets: [
+    {
+      data: authorStats.value.map(entry => entry.count),
+      backgroundColor: authorStats.value.map(entry => entry.color),
+      borderColor: 'rgba(18, 23, 34, 0.9)',
+      borderWidth: 1,
+      borderRadius: 10,
+      borderSkipped: false,
+      barThickness: isMobileLayout.value ? 20 : 26,
+      maxBarThickness: isMobileLayout.value ? 20 : 26,
+    },
+  ],
+}))
+
+const authorChartOptions = computed(() => ({
+  responsive: true,
+  maintainAspectRatio: false,
+  indexAxis: 'y',
+  animation: {
+    duration: 220,
+  },
+  scales: {
+    x: {
+      beginAtZero: true,
+      ticks: {
+        precision: 0,
+        color: '#c8c6c4',
+      },
+      grid: {
+        color: 'rgba(255, 255, 255, 0.08)',
+      },
+      border: {
+        display: false,
+      },
+    },
+    y: {
+      ticks: {
+        color: '#f3f2f1',
+        font: {
+          size: isMobileLayout.value ? 12 : 13,
+        },
+      },
+      grid: {
+        display: false,
+      },
+      border: {
+        display: false,
+      },
+    },
+  },
+  plugins: {
+    legend: {
+      display: false,
+    },
+    tooltip: {
+      backgroundColor: 'rgba(20, 23, 29, 0.96)',
+      borderColor: 'rgba(255, 255, 255, 0.08)',
+      borderWidth: 1,
+      displayColors: false,
+      callbacks: {
+        label(context) {
+          const value = Number(context.raw)
+          const percentage = totalReadCount.value === 0 ? '0.0' : ((value / totalReadCount.value) * 100).toFixed(1)
+          return `${context.label}: ${value} 本 (${percentage}%)`
+        },
+      },
+    },
+  },
+}))
+
 onMounted(() => {
   updateViewportWidth()
   window.addEventListener('resize', updateViewportWidth)
@@ -179,9 +284,30 @@ onBeforeUnmount(() => {
       </div>
     </section>
 
+    <section v-if="totalReadCount > 0" class="statistics-card statistics-card-spaced" aria-labelledby="author-ranking-title">
+      <div class="statistics-header">
+        <div>
+          <p class="section-label">Author Ranking</p>
+          <h2 id="author-ranking-title" class="statistics-title">作者閱讀量排行</h2>
+          <p class="statistics-copy">
+            共統計 {{ totalAuthorCount }} 位作者，只顯示前五名
+            <span v-if="topAuthor">，目前最多的是 {{ topAuthor.author }}（{{ topAuthor.count }} 本）</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="statistics-grid">
+        <div class="bar-chart-shell" role="img" aria-label="作者閱讀量排行長條圖">
+          <div class="bar-chart">
+            <Bar :data="authorChartData" :options="authorChartOptions" />
+          </div>
+        </div>
+      </div>
+    </section>
+
     <section v-else class="empty-state" aria-label="分析統計頁面空狀態">
       <h2 class="empty-title">目前沒有可分析的閱讀資料</h2>
-      <p class="empty-copy">等 `generated/books.json` 有內容後，這裡會顯示分類閱讀量占比。</p>
+      <p class="empty-copy">等 `generated/books.json` 有內容後，這裡會顯示分類占比與作者閱讀量排行。</p>
     </section>
   </AppLayout>
 </template>
