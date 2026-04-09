@@ -239,7 +239,7 @@ const authorExplorationChartData = computed(() => ({
   labels: authorExplorationStats.value.map(entry => entry.year),
   datasets: [
     {
-      label: '啟動過的作者數',
+      label: '接觸的作者數',
       data: authorExplorationStats.value.map(entry => entry.uniqueAuthors),
       backgroundColor: 'rgba(79, 124, 255, 0.78)',
       borderColor: '#4f7cff',
@@ -249,7 +249,7 @@ const authorExplorationChartData = computed(() => ({
       maxBarThickness: 38,
     },
     {
-      label: '首次啟動的新作者',
+      label: '首次接觸的新作者',
       data: authorExplorationStats.value.map(entry => entry.newAuthors),
       backgroundColor: 'rgba(34, 211, 238, 0.72)',
       borderColor: '#22d3ee',
@@ -628,16 +628,16 @@ onBeforeUnmount(() => {
       <div class="statistics-header">
         <div>
           <p class="section-label">Category Distribution</p>
-          <h2 id="category-distribution-title" class="statistics-title">分類啟動分布</h2>
+          <h2 id="category-distribution-title" class="statistics-title">分類分布</h2>
           <p class="statistics-copy">
-            以借閱書籍數量統計分類偏好
+            以借閱書籍數量統計分類
             <span v-if="topCategory">，目前最多的是 {{ topCategory.category }}（{{ topCategory.count }} 本）</span>
           </p>
         </div>
       </div>
 
       <div class="statistics-grid">
-        <div class="pie-chart-shell" role="img" aria-label="各分類借閱書籍占比圓餅圖">
+        <div class="pie-chart-shell" role="img" aria-label="分類分布圓餅圖">
           <div class="pie-chart">
             <Pie :key="chartLayoutKey" :data="categoryChartData" :options="categoryChartOptions" />
           </div>
@@ -651,7 +651,7 @@ onBeforeUnmount(() => {
           <p class="section-label">Author Exploration</p>
           <h2 id="author-exploration-title" class="statistics-title">作者探索趨勢</h2>
           <p class="statistics-copy">
-            每年統計啟動過的作者數與首次接觸的新作者數
+            每年統計接觸的作者數與首次接觸的新作者數
             <span v-if="topAuthorExplorationYear">，{{ topAuthorExplorationYear.year }} 年最廣，接觸 {{ topAuthorExplorationYear.uniqueAuthors }} 位作者</span>
           </p>
         </div>
@@ -670,16 +670,16 @@ onBeforeUnmount(() => {
       <div class="statistics-header">
         <div>
           <p class="section-label">Series Launches</p>
-          <h2 id="series-launch-title" class="statistics-title">新系列啟動排行</h2>
+          <h2 id="series-launch-title" class="statistics-title">系列集數排行</h2>
           <p class="statistics-copy">
-            依系列總集數排序，只看借閱起點已啟動的系列
-            <span v-if="topSeries">，目前最大的是 {{ topSeries.title }}（{{ topSeries.volumeCount }} 集）</span>
+            依系列總集數排序
+            <span v-if="topSeries">，目前最多集的是 {{ topSeries.title }}（{{ topSeries.volumeCount }} 集）</span>
           </p>
         </div>
       </div>
 
       <div class="statistics-grid">
-        <div class="bar-chart-shell" role="img" aria-label="新系列啟動排行長條圖">
+        <div class="bar-chart-shell" role="img" aria-label="系列集數排行長條圖">
           <div class="bar-chart bar-chart-tall">
             <Bar :data="seriesLaunchChartData" :options="seriesLaunchChartOptions" />
           </div>
@@ -738,7 +738,7 @@ onBeforeUnmount(() => {
       <div class="statistics-header">
         <div>
           <p class="section-label">Category Timeline</p>
-          <h2 id="category-timeline-title" class="statistics-title">分類 x 年份堆疊圖</h2>
+          <h2 id="category-timeline-title" class="statistics-title">分類與年份堆疊圖</h2>
           <p class="statistics-copy">比較每年借閱書籍數量，以及主要分類在各年的結構變化。</p>
         </div>
       </div>
