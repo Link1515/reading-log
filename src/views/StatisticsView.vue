@@ -74,7 +74,6 @@ const years = computed(() => yearlyBorrowStats.value.map(entry => entry.year))
 const totalBorrowStartCount = computed(() => borrowStarts.value.length)
 const totalCategoryCount = computed(() => new Set(borrowStarts.value.map(entry => entry.category)).size)
 const totalAuthorCount = computed(() => new Set(borrowStarts.value.map(entry => entry.author)).size)
-const totalSeriesCount = computed(() => books.filter(book => book.type === 'series').length)
 const averageBorrowStartsPerYear = computed(() => {
   if (years.value.length === 0) {
     return '0.0'
@@ -597,8 +596,8 @@ onBeforeUnmount(() => {
         <p class="summary-copy">接觸過 {{ totalAuthorCount }} 位作者</p>
       </article>
       <article class="summary-tile">
-        <p class="summary-label">Series</p>
-        <p class="summary-value">{{ totalSeriesCount }}</p>
+        <p class="summary-label">Average Per Year</p>
+        <p class="summary-value">{{ averageBorrowStartsPerYear }}</p>
         <p class="summary-copy">平均每年借閱 {{ averageBorrowStartsPerYear }} 本</p>
       </article>
     </section>
