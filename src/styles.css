@@ -644,6 +644,44 @@ select.control {
   margin-top: 24px;
 }
 
+.statistics-summary {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.summary-tile {
+  padding: 20px 22px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 22px;
+  background:
+    linear-gradient(180deg, rgba(79, 124, 255, 0.1), rgba(96, 205, 255, 0.04) 42%, transparent 72%),
+    rgba(20, 23, 29, 0.72);
+  box-shadow: var(--shadow);
+}
+
+.summary-label {
+  margin: 0;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent-soft);
+}
+
+.summary-value {
+  margin: 14px 0 0;
+  font-size: clamp(1.9rem, 4vw, 2.6rem);
+  font-weight: 700;
+  color: #ffffff;
+}
+
+.summary-copy {
+  margin: 8px 0 0;
+  color: var(--text-muted);
+}
+
 .statistics-header {
   margin-bottom: 28px;
 }
@@ -672,7 +710,8 @@ select.control {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 24px;
   background:
-    radial-gradient(circle at center, rgba(96, 205, 255, 0.08), transparent 58%),
+    radial-gradient(circle at center, rgba(79, 124, 255, 0.12), transparent 52%),
+    radial-gradient(circle at 30% 24%, rgba(96, 205, 255, 0.08), transparent 30%),
     rgba(20, 23, 29, 0.72);
 }
 
@@ -686,13 +725,111 @@ select.control {
   border: 1px solid rgba(255, 255, 255, 0.06);
   border-radius: 24px;
   background:
-    linear-gradient(180deg, rgba(96, 205, 255, 0.06), transparent 24%),
+    linear-gradient(180deg, rgba(79, 124, 255, 0.1), rgba(96, 205, 255, 0.03) 28%, transparent 60%),
     rgba(20, 23, 29, 0.72);
 }
 
 .bar-chart {
   width: 100%;
   height: 360px;
+}
+
+.bar-chart-tall {
+  height: 420px;
+}
+
+.heatmap-shell {
+  padding: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at top left, rgba(79, 124, 255, 0.12), transparent 34%),
+    radial-gradient(circle at 24% 18%, rgba(96, 205, 255, 0.08), transparent 24%),
+    rgba(20, 23, 29, 0.72);
+}
+
+.heatmap-legend {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 18px;
+  color: var(--text-muted);
+  font-size: 0.85rem;
+}
+
+.heatmap-legend-scale {
+  display: inline-grid;
+  grid-template-columns: repeat(4, 16px);
+  gap: 6px;
+}
+
+.heatmap-swatch {
+  width: 16px;
+  height: 16px;
+  border-radius: 6px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  background-color: rgba(79, 124, 255, 0.1);
+}
+
+.heatmap-swatch.is-level-1 {
+  background-color: rgba(79, 124, 255, 0.18);
+}
+
+.heatmap-swatch.is-level-2 {
+  background-color: rgba(79, 124, 255, 0.3);
+}
+
+.heatmap-swatch.is-level-3 {
+  background-color: rgba(79, 124, 255, 0.48);
+}
+
+.heatmap-swatch.is-level-4 {
+  background-color: rgba(79, 124, 255, 0.68);
+}
+
+.heatmap-grid {
+  display: grid;
+  grid-template-columns: 72px repeat(12, minmax(0, 1fr));
+  gap: 8px;
+  align-items: center;
+}
+
+.heatmap-corner,
+.heatmap-month-label,
+.heatmap-year-label {
+  color: var(--text-muted);
+  font-size: 0.86rem;
+}
+
+.heatmap-month-label {
+  text-align: center;
+}
+
+.heatmap-year-label {
+  padding-right: 8px;
+  text-align: right;
+}
+
+.heatmap-cell {
+  display: grid;
+  place-items: center;
+  min-height: 46px;
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  border-radius: 14px;
+  background-color: rgba(79, 124, 255, calc(0.1 + (var(--heat) * 0.58)));
+  color: #ffffff;
+  transition: border-color 180ms ease, transform 180ms ease, background-color 180ms ease;
+}
+
+.heatmap-cell:hover {
+  border-color: rgba(96, 205, 255, 0.34);
+  transform: translateY(-1px);
+}
+
+.heatmap-cell span {
+  font-size: 0.95rem;
+  font-weight: 600;
 }
 
 @media (max-width: 900px) {
@@ -715,6 +852,15 @@ select.control {
 
   .statistics-grid {
     display: block;
+  }
+
+  .statistics-summary {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .heatmap-grid {
+    grid-template-columns: 60px repeat(12, minmax(42px, 1fr));
+    overflow-x: auto;
   }
 }
 
@@ -789,6 +935,15 @@ select.control {
     border-radius: 22px;
   }
 
+  .statistics-summary {
+    grid-template-columns: 1fr;
+  }
+
+  .summary-tile {
+    padding: 18px;
+    border-radius: 18px;
+  }
+
   .pie-chart-shell {
     min-height: 380px;
     padding: 12px;
@@ -807,5 +962,32 @@ select.control {
 
   .bar-chart {
     height: 320px;
+  }
+
+  .bar-chart-tall {
+    height: 380px;
+  }
+
+  .heatmap-shell {
+    padding: 14px;
+    border-radius: 20px;
+  }
+
+  .heatmap-legend {
+    justify-content: flex-start;
+  }
+
+  .heatmap-grid {
+    grid-template-columns: 54px repeat(12, minmax(40px, 1fr));
+    gap: 6px;
+  }
+
+  .heatmap-cell {
+    min-height: 40px;
+    border-radius: 12px;
+  }
+
+  .heatmap-cell span {
+    font-size: 0.85rem;
   }
 }
