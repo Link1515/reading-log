@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-label="Reading Log">
+  <rect width="64" height="64" rx="12" fill="#090a0d" />
+  <path d="M8 15h20c3.3 0 6.1 1.1 8 3.2 1.9-2.1 4.7-3.2 8-3.2h12v39H42c-2.4 0-4.5.7-6 2-1.5-1.3-3.6-2-6-2H8V15Z" fill="#111827" />
+  <path d="M13 19h15c3 0 5.6 1.3 8 3.8v27.7c-2.1-1.5-4.7-2.3-8-2.3H13V19Z" fill="#f3f2f1" />
+  <path d="M36 22.8c2.4-2.5 5-3.8 8-3.8h7v29.2h-7c-3.3 0-5.9.8-8 2.3V22.8Z" fill="#d9e3eb" />
+  <path d="M18 28h9M18 36h9M43 28h4M43 36h4" fill="none" stroke="#111827" stroke-linecap="round" stroke-opacity=".18" stroke-width="2" />
+</svg>
