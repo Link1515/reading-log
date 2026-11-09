@@ -19,11 +19,9 @@ export function useStatisticsViewport() {
   })
 
   const isMobileLayout = computed(() => viewportWidth.value <= MOBILE_BREAKPOINT)
-  const chartLayoutKey = computed(() => (isMobileLayout.value ? 'statistics-pie-mobile' : 'statistics-pie-desktop'))
 
   return {
     viewportWidth,
     isMobileLayout,
-    chartLayoutKey,
   }
 }

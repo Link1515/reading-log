@@ -7,18 +7,14 @@ import BookFilters from '../components/BookFilters.vue'
 import BookList from '../components/BookList.vue'
 import books from '../data/generated/books.json'
 
-const collator = new Intl.Collator('zh-Hant', {
-  sensitivity: 'base',
-  numeric: true,
-})
-
+const collator = new Intl.Collator('zh-Hant', { sensitivity: 'base', numeric: true })
 const sortOptions = [
-  { value: 'date-desc', label: '閱讀日期新到舊' },
-  { value: 'date-asc', label: '閱讀日期舊到新' },
-  { value: 'title-asc', label: '書名 A 到 Z' },
-  { value: 'title-desc', label: '書名 Z 到 A' },
-  { value: 'author-asc', label: '作者 A 到 Z' },
-  { value: 'author-desc', label: '作者 Z 到 A' },
+  { value: 'date-desc', label: '最新借閱' },
+  { value: 'date-asc', label: '最早借閱' },
+  { value: 'title-asc', label: '書名 A → Z' },
+  { value: 'title-desc', label: '書名 Z → A' },
+  { value: 'author-asc', label: '作者 A → Z' },
+  { value: 'author-desc', label: '作者 Z → A' },
 ]
 
 const fuse = new Fuse(books, {
@@ -34,17 +30,10 @@ const fuse = new Fuse(books, {
 
 const authorOptions = [...new Set(books.map(book => book.author))]
   .toSorted((left, right) => collator.compare(left, right))
-  .map(author => ({
-    value: author,
-    label: author,
-  }))
-
+  .map(author => ({ value: author, label: author }))
 const categoryOptions = [...new Set(books.map(book => book.category))]
   .toSorted((left, right) => collator.compare(left, right))
-  .map(category => ({
-    value: category,
-    label: category,
-  }))
+  .map(category => ({ value: category, label: category }))
 
 const filters = reactive({
   keyword: '',
@@ -54,31 +43,17 @@ const filters = reactive({
   endDate: '',
   sort: 'date-desc',
 })
-
-const uiState = reactive({
-  showFilters: false,
-})
-
-const searchInputState = reactive({
-  draftKeyword: '',
-  isComposing: false,
-})
+const searchInputState = reactive({ draftKeyword: '', isComposing: false })
 
 function compareBooks(sortKey, left, right) {
   switch (sortKey) {
-    case 'date-asc':
-      return left.readDate.localeCompare(right.readDate)
-    case 'title-asc':
-      return collator.compare(left.title, right.title)
-    case 'title-desc':
-      return collator.compare(right.title, left.title)
-    case 'author-asc':
-      return collator.compare(left.author, right.author)
-    case 'author-desc':
-      return collator.compare(right.author, left.author)
+    case 'date-asc': return left.readDate.localeCompare(right.readDate)
+    case 'title-asc': return collator.compare(left.title, right.title)
+    case 'title-desc': return collator.compare(right.title, left.title)
+    case 'author-asc': return collator.compare(left.author, right.author)
+    case 'author-desc': return collator.compare(right.author, left.author)
     case 'date-desc':
-    default:
-      return right.readDate.localeCompare(left.readDate)
+    default: return right.readDate.localeCompare(left.readDate)
   }
 }
 
@@ -88,54 +63,56 @@ const filteredBooks = computed(() => {
 
   return searchResults
     .filter(book => {
-      if (filters.author && book.author !== filters.author) {
-        return false
-      }
-
-      if (filters.category && book.category !== filters.category) {
-        return false
-      }
-
-      if (filters.startDate && book.endReadDate < filters.startDate) {
-        return false
-      }
-
-      if (filters.endDate && book.startReadDate > filters.endDate) {
-        return false
-      }
-
+      if (filters.author && book.author !== filters.author) return false
+      if (filters.category && book.category !== filters.category) return false
+      if (filters.startDate && book.endReadDate < filters.startDate) return false
+      if (filters.endDate && book.startReadDate > filters.endDate) return false
       return true
     })
     .toSorted((left, right) => compareBooks(filters.sort, left, right))
 })
 
-const resultSummary = computed(() => {
-  const count = filteredBooks.value.reduce((total, book) => {
-    if (book.type === 'series' && Array.isArray(book.volumes) && book.volumes.length > 0) {
-      return total + book.volumes.length
-    }
+const bookCount = computed(() => filteredBooks.value.reduce((total, book) => (
+  total + (book.type === 'series' && book.volumes.length ? book.volumes.length : 1)
+), 0))
 
-    return total + 1
-  }, 0)
+const activeFilters = computed(() => [
+  filters.category && { key: 'category', label: '類型：' + filters.category },
+  filters.author && { key: 'author', label: '作者：' + filters.author },
+  filters.startDate && { key: 'startDate', label: '自 ' + filters.startDate },
+  filters.endDate && { key: 'endDate', label: '至 ' + filters.endDate },
+].filter(Boolean))
 
-  return `共 ${count} 本書`
+const hasInvalidDateRange = computed(() => (
+  Boolean(filters.startDate && filters.endDate && filters.startDate > filters.endDate)
+))
+const isDateSort = computed(() => filters.sort.startsWith('date-'))
+const groupedBooks = computed(() => {
+  if (!filteredBooks.value.length) return []
+  if (!isDateSort.value) return [{ key: 'all', label: '', books: filteredBooks.value }]
+
+  const groups = new Map()
+  for (const book of filteredBooks.value) {
+    const year = book.readDate.slice(0, 4)
+    if (!groups.has(year)) groups.set(year, [])
+    groups.get(year).push(book)
+  }
+  return [...groups.entries()].map(([year, entries]) => ({ key: year, label: year, books: entries }))
 })
 
 function syncKeyword(value) {
   searchInputState.draftKeyword = value
-
-  if (!searchInputState.isComposing) {
-    filters.keyword = value
-  }
-}
-
-function handleCompositionStart() {
-  searchInputState.isComposing = true
+  if (!searchInputState.isComposing) filters.keyword = value
 }
 
 function handleCompositionEnd(event) {
   searchInputState.isComposing = false
   syncKeyword(event.target.value)
+}
+
+function jumpToYear(year) {
+  const behavior = window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'instant' : 'smooth'
+  document.getElementById('year-' + year)?.scrollIntoView({ behavior, block: 'start' })
 }
 
 function resetFilters() {
@@ -146,69 +123,74 @@ function resetFilters() {
   filters.startDate = ''
   filters.endDate = ''
   filters.sort = 'date-desc'
-  uiState.showFilters = false
 }
 </script>
 
 <template>
   <AppLayout>
-    <template #toolbar>
-      <div class="search-toolbar">
-        <label class="search-shell" for="global-search">
-          <div class="search-input-wrap">
-            <input
-              id="global-search"
-              :value="searchInputState.isComposing ? searchInputState.draftKeyword : filters.keyword"
-              class="search-input"
-              type="search"
-              placeholder="輸入關鍵字查詢"
-              @compositionstart="handleCompositionStart"
-              @compositionend="handleCompositionEnd"
-              @input="syncKeyword($event.target.value)"
-            />
-            <Icon icon="material-symbols:search-rounded" class="search-input-icon" />
-          </div>
-        </label>
-        <button
-          class="collapse-toggle"
-          type="button"
-          :aria-expanded="uiState.showFilters"
-          :aria-label="uiState.showFilters ? '收合條件調整' : '展開條件調整'"
-          :title="uiState.showFilters ? '收合條件調整' : '展開條件調整'"
-          aria-controls="search-filters-panel"
-          @click="uiState.showFilters = !uiState.showFilters"
-        >
-          <Icon :icon="uiState.showFilters ? 'material-symbols:close-rounded' : 'material-symbols:tune-rounded'" class="collapse-icon" />
-        </button>
-      </div>
-    </template>
-
-    <template #topbar-extra>
-      <Transition name="collapse-panel">
-        <div v-if="uiState.showFilters" id="search-filters-panel" class="search-collapse">
-          <BookFilters
-            v-model:author="filters.author"
-            v-model:category="filters.category"
-            v-model:start-date="filters.startDate"
-            v-model:end-date="filters.endDate"
-            v-model:sort="filters.sort"
-            :author-options="authorOptions"
-            :category-options="categoryOptions"
-            :sort-options="sortOptions"
-            @reset="resetFilters"
-          />
-        </div>
-      </Transition>
-    </template>
-
-    <section class="hero">
-      <p class="eyebrow">Personal Library</p>
+    <header class="page-intro">
       <h1>閱讀紀錄</h1>
-      <p class="hero-copy">收藏每一次閱讀留下的痕跡</p>
+      <p>收藏每一次閱讀留下的痕跡</p>
+    </header>
+
+    <section class="search-section" aria-label="搜尋與篩選">
+      <label class="search-field" for="global-search">
+        <Icon icon="material-symbols:search-rounded" aria-hidden="true" />
+        <span class="sr-only">搜尋書名、作者或分集副標題</span>
+        <input
+          id="global-search"
+          :value="searchInputState.isComposing ? searchInputState.draftKeyword : filters.keyword"
+          type="search"
+          placeholder="搜尋書名、作者或分集副標題"
+          @compositionstart="searchInputState.isComposing = true"
+          @compositionend="handleCompositionEnd"
+          @input="syncKeyword($event.target.value)"
+        />
+      </label>
+
+      <BookFilters
+        v-model:author="filters.author"
+        v-model:category="filters.category"
+        v-model:start-date="filters.startDate"
+        v-model:end-date="filters.endDate"
+        v-model:sort="filters.sort"
+        :author-options="authorOptions"
+        :category-options="categoryOptions"
+        :sort-options="sortOptions"
+        :active-count="activeFilters.length"
+        @reset="resetFilters"
+      />
+      <p v-if="hasInvalidDateRange" class="filter-error" role="alert">起始借閱日期不能晚於結束借閱日期，請調整日期範圍。</p>
+
+      <div v-if="activeFilters.length" class="active-filters" aria-label="已套用的篩選條件">
+        <span>已套用</span>
+        <button
+          v-for="filter in activeFilters"
+          :key="filter.key"
+          class="filter-chip"
+          type="button"
+          :aria-label="'移除' + filter.label"
+          @click="filters[filter.key] = ''"
+        >
+          {{ filter.label }}
+          <Icon icon="material-symbols:close-rounded" aria-hidden="true" />
+        </button>
+        <button class="text-button" type="button" @click="resetFilters">清除全部</button>
+      </div>
     </section>
 
-    <p class="search-summary list-summary">{{ resultSummary }}</p>
+    <div class="result-bar" aria-live="polite">
+      <p class="result-count">共 <strong>{{ bookCount }}</strong> 本書 <span>· {{ filteredBooks.length }} 筆紀錄</span></p>
+      <nav v-if="isDateSort && groupedBooks.length > 1" class="year-jump" aria-label="快速跳至年份">
+        <button v-for="group in groupedBooks" :key="group.key" type="button" @click="jumpToYear(group.label)">{{ group.label }}</button>
+      </nav>
+    </div>
 
-    <BookList :books="filteredBooks" :keyword="filters.keyword" />
+    <BookList
+      :groups="groupedBooks"
+      :keyword="filters.keyword"
+      :is-library-empty="books.length === 0"
+      @reset="resetFilters"
+    />
   </AppLayout>
 </template>

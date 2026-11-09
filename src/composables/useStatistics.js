@@ -65,24 +65,24 @@ export function useStatistics(rawBooks, viewport) {
 
   const summaryTiles = computed(() => [
     {
-      label: 'Borrow Starts',
+      label: '借閱書籍',
       value: totalBorrowStartCount.value,
-      copy: '總借閱書籍數量',
+      copy: '各集與單本合計',
     },
     {
-      label: 'Categories',
+      label: '涵蓋類型',
       value: totalCategoryCount.value,
-      copy: `涵蓋 ${totalCategoryCount.value} 種分類`,
+      copy: '不同書籍類型',
     },
     {
-      label: 'Authors',
+      label: '接觸作者',
       value: totalAuthorCount.value,
-      copy: `接觸過 ${totalAuthorCount.value} 位作者`,
+      copy: '不同作者',
     },
     {
-      label: 'Average Per Year',
+      label: '年均借閱',
       value: averageBorrowStartsPerYear.value,
-      copy: `平均每年借閱 ${averageBorrowStartsPerYear.value} 本`,
+      copy: '本／年',
     },
   ])
 
@@ -244,7 +244,6 @@ export function useStatistics(rawBooks, viewport) {
 
   return {
     MONTH_LABELS,
-    chartLayoutKey: viewport.chartLayoutKey,
     hasBorrowData,
     hasSeriesData,
     hasHeatmapData,

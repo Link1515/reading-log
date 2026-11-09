@@ -1,4 +1,4 @@
-import { ArcElement, BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Tooltip } from 'chart.js'
+import { BarElement, CategoryScale, Chart as ChartJS, Legend, LinearScale, Tooltip } from 'chart.js'
 
 import { CATEGORY_COLORS, OTHER_COLOR } from './constants'
 import { getPercentage } from './helpers'
@@ -10,14 +10,14 @@ export function registerStatisticsCharts() {
     return
   }
 
-  ChartJS.register(ArcElement, BarElement, CategoryScale, LinearScale, Tooltip, Legend)
+  ChartJS.register(BarElement, CategoryScale, LinearScale, Tooltip, Legend)
   isChartRegistered = true
 }
 
 function createTooltipStyle() {
   return {
-    backgroundColor: 'rgba(20, 23, 29, 0.96)',
-    borderColor: 'rgba(255, 255, 255, 0.08)',
+    backgroundColor: '#202836',
+    borderColor: '#344151',
     borderWidth: 1,
     displayColors: true,
   }
@@ -33,7 +33,7 @@ export function createBaseVerticalBarOptions(isMobileLayout) {
     scales: {
       x: {
         ticks: {
-          color: '#c8c6c4',
+          color: '#a7b4c4',
         },
         grid: {
           display: false,
@@ -45,14 +45,14 @@ export function createBaseVerticalBarOptions(isMobileLayout) {
       y: {
         beginAtZero: true,
         ticks: {
-          color: '#f3f2f1',
+          color: '#f3f5f5',
           precision: 0,
           font: {
             size: isMobileLayout ? 12 : 13,
           },
         },
         grid: {
-          color: 'rgba(255, 255, 255, 0.08)',
+          color: '#344151',
         },
         border: {
           display: false,
@@ -62,7 +62,7 @@ export function createBaseVerticalBarOptions(isMobileLayout) {
     plugins: {
       legend: {
         labels: {
-          color: '#f3f2f1',
+          color: '#f3f5f5',
           boxWidth: 12,
           boxHeight: 12,
           usePointStyle: true,
@@ -84,11 +84,11 @@ export function createBaseHorizontalBarOptions(isMobileLayout) {
       x: {
         beginAtZero: true,
         ticks: {
-          color: '#c8c6c4',
+          color: '#a7b4c4',
           precision: 0,
         },
         grid: {
-          color: 'rgba(255, 255, 255, 0.08)',
+          color: '#344151',
         },
         border: {
           display: false,
@@ -96,7 +96,7 @@ export function createBaseHorizontalBarOptions(isMobileLayout) {
       },
       y: {
         ticks: {
-          color: '#f3f2f1',
+          color: '#f3f5f5',
           font: {
             size: isMobileLayout ? 12 : 13,
           },
@@ -138,60 +138,35 @@ export function createBorrowingTrendChartOptions({ isMobileLayout, totalBorrowSt
 }
 
 export function createCategoryChartOptions({ isMobileLayout }) {
+  const baseOptions = createBaseHorizontalBarOptions(isMobileLayout)
+
   return {
-    responsive: true,
-    maintainAspectRatio: false,
+    ...baseOptions,
     layout: {
-      padding: isMobileLayout ? { top: 8, right: 8, bottom: 8, left: 8 } : { top: 8, right: 24, bottom: 8, left: 8 },
+      padding: isMobileLayout ? 4 : 8,
     },
     plugins: {
-      legend: {
-        display: true,
-        position: isMobileLayout ? 'bottom' : 'right',
-        align: 'center',
-        labels: {
-          color: '#ffffff',
-          boxWidth: 12,
-          boxHeight: 12,
-          padding: isMobileLayout ? 16 : 18,
-          usePointStyle: true,
-          pointStyle: 'circle',
-          font: {
-            size: isMobileLayout ? 13 : 14,
-          },
-          generateLabels(chart) {
-            const dataset = chart.data.datasets[0]
-            const values = dataset.data.map(value => Number(value))
-            const total = values.reduce((sum, value) => sum + value, 0)
-
-            return chart.data.labels.map((label, index) => {
-              const value = values[index] ?? 0
-              const percentage = getPercentage(value, total)
-              const backgroundColor = Array.isArray(dataset.backgroundColor) ? dataset.backgroundColor[index] : dataset.backgroundColor
-
-              return {
-                text: `${label} ${percentage}%`,
-                fillStyle: backgroundColor,
-                strokeStyle: backgroundColor,
-                fontColor: '#ffffff',
-                pointStyle: 'circle',
-                hidden: !chart.getDataVisibility(index),
-                index,
-              }
-            })
-          },
-        },
-      },
+      ...baseOptions.plugins,
+      legend: { display: false },
       tooltip: {
-        ...createTooltipStyle(),
+        ...baseOptions.plugins.tooltip,
         displayColors: false,
         callbacks: {
           label(context) {
-            const total = context.dataset.data.reduce((sum, value) => sum + value, 0)
             const value = Number(context.raw)
-            const percentage = getPercentage(value, total)
-            return `${context.label}: ${value} 本 (${percentage}%)`
+            const total = context.dataset.data.reduce((sum, count) => sum + Number(count), 0)
+            return context.label + ': ' + value + ' 本 (' + getPercentage(value, total) + '%)'
           },
+        },
+      },
+    },
+    scales: {
+      ...baseOptions.scales,
+      y: {
+        ...baseOptions.scales.y,
+        ticks: {
+          ...baseOptions.scales.y.ticks,
+          autoSkip: false,
         },
       },
     },
@@ -289,16 +264,17 @@ export function createCategoryTimelineChartOptions({ isMobileLayout }) {
 }
 
 export function createBorrowingTrendChartData(yearlyBorrowStats) {
+  const highestCount = Math.max(...yearlyBorrowStats.map(entry => entry.count), 0)
+
   return {
     labels: yearlyBorrowStats.map(entry => entry.year),
     datasets: [
       {
-        label: '借書啟動數',
+        label: '借閱書籍數',
         data: yearlyBorrowStats.map(entry => entry.count),
-        backgroundColor: 'rgba(96, 205, 255, 0.76)',
-        borderColor: '#60cdff',
-        borderWidth: 1,
-        borderRadius: 10,
+        backgroundColor: yearlyBorrowStats.map(entry => entry.count === highestCount ? '#70c5be' : '#79b8ff'),
+        borderWidth: 0,
+        borderRadius: 5,
         borderSkipped: false,
         maxBarThickness: 44,
       },
@@ -311,11 +287,13 @@ export function createCategoryChartData(categoryStats) {
     labels: categoryStats.map(entry => entry.category),
     datasets: [
       {
+        label: '借閱書籍數',
         data: categoryStats.map(entry => entry.count),
         backgroundColor: categoryStats.map(entry => entry.color),
-        borderColor: 'rgba(18, 23, 34, 0.9)',
-        borderWidth: 2,
-        hoverOffset: 6,
+        borderWidth: 0,
+        borderRadius: 5,
+        borderSkipped: false,
+        maxBarThickness: 30,
       },
     ],
   }
@@ -328,20 +306,18 @@ export function createAuthorExplorationChartData(authorExplorationStats) {
       {
         label: '接觸的作者數',
         data: authorExplorationStats.map(entry => entry.uniqueAuthors),
-        backgroundColor: 'rgba(79, 124, 255, 0.78)',
-        borderColor: '#4f7cff',
-        borderWidth: 1,
-        borderRadius: 10,
+        backgroundColor: '#79b8ff',
+        borderWidth: 0,
+        borderRadius: 5,
         borderSkipped: false,
         maxBarThickness: 38,
       },
       {
         label: '首次接觸的新作者',
         data: authorExplorationStats.map(entry => entry.newAuthors),
-        backgroundColor: 'rgba(34, 211, 238, 0.72)',
-        borderColor: '#22d3ee',
-        borderWidth: 1,
-        borderRadius: 10,
+        backgroundColor: '#70c5be',
+        borderWidth: 0,
+        borderRadius: 5,
         borderSkipped: false,
         maxBarThickness: 38,
       },
@@ -359,9 +335,8 @@ export function createSeriesLaunchChartData(seriesLaunchChartEntries, isMobileLa
         label: '系列總集數',
         data: seriesLaunchChartEntries.map(entry => entry.volumeCount),
         backgroundColor: seriesLaunchChartEntries.map(entry => entry.color),
-        borderColor: 'rgba(18, 23, 34, 0.9)',
-        borderWidth: 1,
-        borderRadius: 10,
+        borderWidth: 0,
+        borderRadius: 5,
         borderSkipped: false,
         barThickness,
         maxBarThickness: barThickness,
@@ -379,8 +354,9 @@ export function createCategoryTimelineChartData({ categoryStats, categoryYearlyS
     label: category,
     data: categoryYearlyStats.map(entry => entry.values[index] ?? 0),
     backgroundColor: categoryStats.find(entry => entry.category === category)?.color ?? CATEGORY_COLORS[index % CATEGORY_COLORS.length],
-    borderWidth: 0,
-    borderRadius: 6,
+    borderColor: '#171d27',
+    borderWidth: 1,
+    borderRadius: 3,
     borderSkipped: false,
     maxBarThickness: 42,
   }))
@@ -390,7 +366,8 @@ export function createCategoryTimelineChartData({ categoryStats, categoryYearlyS
       label: '其他',
       data: categoryYearlyStats.map(entry => entry.other),
       backgroundColor: OTHER_COLOR,
-      borderWidth: 0,
+      borderColor: '#171d27',
+      borderWidth: 1,
       borderRadius: 0,
       borderSkipped: false,
       maxBarThickness: 42,

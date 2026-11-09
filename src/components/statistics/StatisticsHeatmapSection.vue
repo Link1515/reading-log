@@ -1,43 +1,21 @@
 <script setup>
 defineProps({
-  titleId: {
-    type: String,
-    required: true,
-  },
-  sectionLabel: {
-    type: String,
-    required: true,
-  },
-  title: {
-    type: String,
-    required: true,
-  },
-  copy: {
-    type: String,
-    required: true,
-  },
-  monthLabels: {
-    type: Array,
-    required: true,
-  },
-  years: {
-    type: Array,
-    required: true,
-  },
+  titleId: { type: String, required: true },
+  title: { type: String, required: true },
+  copy: { type: String, required: true },
+  monthLabels: { type: Array, required: true },
+  years: { type: Array, required: true },
 })
 </script>
 
 <template>
-  <section class="statistics-card statistics-card-spaced" :aria-labelledby="titleId">
+  <section :id="titleId" class="statistics-card" :aria-labelledby="titleId + '-heading'">
     <div class="statistics-header">
-      <div>
-        <p class="section-label">{{ sectionLabel }}</p>
-        <h2 :id="titleId" class="statistics-title">{{ title }}</h2>
-        <p class="statistics-copy">{{ copy }}</p>
-      </div>
+      <h2 :id="titleId + '-heading'" class="statistics-title">{{ title }}</h2>
+      <p class="statistics-copy">{{ copy }}</p>
     </div>
 
-    <div class="heatmap-shell" role="img" aria-label="借書密度年月熱圖">
+    <div class="heatmap-shell">
       <div class="heatmap-legend" aria-hidden="true">
         <span>少</span>
         <div class="heatmap-legend-scale">
@@ -48,26 +26,25 @@ defineProps({
         </div>
         <span>多</span>
       </div>
-
-      <div class="heatmap-grid">
-        <div class="heatmap-month-label heatmap-corner"></div>
-        <div v-for="label in monthLabels" :key="label" class="heatmap-month-label">
-          {{ label }}
-        </div>
-
-        <template v-for="year in years" :key="year.year">
-          <div class="heatmap-year-label">{{ year.year }}</div>
-          <div
-            v-for="month in year.months"
-            :key="month.monthKey"
-            class="heatmap-cell"
-            :style="{ '--heat': month.intensity.toFixed(3) }"
-            :aria-label="`${month.monthKey} 借閱書籍 ${month.count} 本`"
-            :title="`${month.monthKey}：${month.count} 本`"
-          >
-            <span>{{ month.count }}</span>
-          </div>
-        </template>
+      <p class="heatmap-scroll-hint">左右滑動查看月份</p>
+      <div class="heatmap-scroll">
+        <table class="heatmap-table">
+          <caption class="sr-only">各年每月借閱書籍數量；顏色越亮代表數量越多</caption>
+          <thead>
+            <tr>
+              <th scope="col">年份</th>
+              <th v-for="label in monthLabels" :key="label" scope="col">{{ label }}</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr v-for="year in years" :key="year.year">
+              <th scope="row">{{ year.year }}</th>
+              <td v-for="month in year.months" :key="month.monthKey" :title="month.monthKey + '：' + month.count + ' 本'">
+                <span class="heatmap-cell" :style="{ '--heat': month.intensity.toFixed(3) }">{{ month.count }}</span>
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
     </div>
   </section>
